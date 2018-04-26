@@ -7,32 +7,53 @@ wide, high = imIn.size
 print wide, high
 print imIn.mode
 
-imBW = Image.new("RGBA", (wide,high), "white")
-pixBW = imBW.load()
+imOut = Image.new("RGBA", (wide,high), "white")
+pixOut = imOut.load()
 
 i = 0
 j = 0
 while j < high:
   while i < wide: 
-    pixBW[i,j] = pixIn[i,j]
+    pixOut[i,j] = pixIn[i,j]
     ave = pixIn[i,j][0]+pixIn[i,j][1]+pixIn[i,j][2]
     ave /= 3
-    pixBW[i,j] = (ave,ave,ave, pixIn[i,j][3])
+    pixOut[i,j] = (ave,ave,ave, pixIn[i,j][3])
     i+=1
   i=0
   j+=1
 
-imBW.save(imName + "_BW.png")
-
 dimOut = 32
+imOut = imOut.resize((dimOut,dimOut))
+imOut = imOut.convert("LA")
+imOut.save(imName + "_preTH.png")
+pixOut = imOut.load()
+i = 0
+j = 0
+while j < dimOut:
+    while i < dimOut:
+        val = pixOut[i,j]
+        if val[1] == 0:
+            pixOut[i,j] = (255, 0)
+        elif val[0] <= 31:
+            pixOut[i,j] = (16, 255)
+        elif val[0] >= 32 and val[0] <= 63:
+            pixOut[i,j] = (48, 255)
+        elif val[0] >= 64 and val[0] <= 95:
+            pixOut[i,j] = (80, 255)
+        elif val[0] >= 96 and val[0] <= 127:
+            pixOut[i,j] = (112, 255)
+        elif val[0] >= 128 and val[0] <= 159:
+            pixOut[i,j] = (144, 255)
+        elif val[0] >= 160 and val[0] <= 191:
+            pixOut[i,j] = (176, 255)
+        elif val[0] >= 192 and val[0] <= 223:
+            pixOut[i,j] = (208, 255)
+        elif val[0] >= 224:
+            pixOut[i,j] = (240, 255)
+        i+=1
+    i=0
+    j+=1
 
-#imScaled = Image.new("RGBA", (dimOut,dimOut), "white")
-imScaled = imBW.resize((dimOut,dimOut))
-imScaled.save(imName + "_scaled.png")
+imOut.save(imName + "_final.png")
 
-imL = imIn.convert("L")
-imL.save(imName + "_L.png")
-
-imIn.close()
-imBW.close()
-imScaled.close()
+imOut.close()
