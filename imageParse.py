@@ -25,31 +25,23 @@ while j < high:
 dimOut = 32
 imOut = imOut.resize((dimOut,dimOut))
 imOut = imOut.convert("LA")
-imOut.save(imName + "_preTH.png")
+#imOut.save(imName + "_preTH.png")
+
 pixOut = imOut.load()
+#threshold = (0,31,63,95,127,159,191,223,255)
+threshold = (0,15,31,47,63,80,95,111,127,191,255)
 i = 0
 j = 0
 while j < dimOut:
     while i < dimOut:
         val = pixOut[i,j]
         if val[1] == 0:
-            pixOut[i,j] = (255, 0)
-        elif val[0] <= 31:
-            pixOut[i,j] = (16, 255)
-        elif val[0] >= 32 and val[0] <= 63:
-            pixOut[i,j] = (48, 255)
-        elif val[0] >= 64 and val[0] <= 95:
-            pixOut[i,j] = (80, 255)
-        elif val[0] >= 96 and val[0] <= 127:
-            pixOut[i,j] = (112, 255)
-        elif val[0] >= 128 and val[0] <= 159:
-            pixOut[i,j] = (144, 255)
-        elif val[0] >= 160 and val[0] <= 191:
-            pixOut[i,j] = (176, 255)
-        elif val[0] >= 192 and val[0] <= 223:
-            pixOut[i,j] = (208, 255)
-        elif val[0] >= 224:
-            pixOut[i,j] = (240, 255)
+            pixOut[i,j] = (255,0)
+        else:
+            for thresh in threshold:
+                if val[0] < thresh:
+                    pixOut[i,j] = (thresh, 255)
+                    break
         i+=1
     i=0
     j+=1
