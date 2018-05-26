@@ -48,4 +48,4 @@ while j < dimOut:
 
 imOut.save(imName + "_final.png")
 
-imOut.close()
+#imOut.close()
