@@ -1,4 +1,44 @@
 from PIL import Image
+
+# print parsed image to ASCII
+def asciiPrint():
+    # get image name from user, open image
+    imName = raw_input("Image name (without extension):") 
+    imIn = Image.open("parsed/images/" + imName + ".png")
+    pixIn = imIn.load()
+    print "Image loaded successfully!"
+
+    # get image size and mode, print for debugging
+    wide, high = imIn.size
+    print wide, high
+    print imIn.mode
+
+    #parse through image, print to terminal
+    i = 0
+    j = 0
+    line = ""
+
+    threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
+    threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
+
+    while j < high:
+        while i < wide:
+            val = pixIn[i,j]
+            if val[1] != 0:
+                for thresh in threshold:
+                    if val[0] == thresh:
+                        line += threschar[threshold.index(thresh)].ljust(2)
+                #line += str(val[0]).ljust(4)
+            else:
+                line += "  "
+            i+=1
+        print line
+        line = ""
+        i=0
+        j+=1
+
+    imIn.close()
+
 # load, desaturate, and scale image
 def imageParse(): 
     # get image name from user, open image
