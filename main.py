@@ -3,12 +3,14 @@ import modules
 
 done = False
 
+print "Welcome\n"
+
 while not done:
-    print "Welcome\n"
     print "Select option:\n"
     print "1 Load, desaturate and scale image"
     print "2 Print an image to ASCII art in terminal"
-    print "3 Quit"
+    print "3 Partition an image into contiguous islands"
+    print "4 Quit"
 
     menu = raw_input()
 
@@ -17,17 +19,20 @@ while not done:
     elif menu == "2":
         modules.asciiPrint()
     elif menu == "3":
-        #print "unimplemented"
-        done = True
+        modules.imagePartition()
     elif menu == "4":
-        print "unimplemented"
+        done = True
     elif menu == "5":
-        print "unimplemented"
+        print "\nunimplemented\n"
     elif menu == "6":
-        print "unimplemented"
+        print "\nunimplemented\n"
     elif menu == "7":
-        print "unimplemented"
+        print "\nunimplemented\n"
     elif menu == "8":
-        print "unimplemented"
+        print "\nunimplemented\n"
     elif menu == "9":
-        print "unimplemented"
+        print "\nunimplemented\n"
+    else:
+        print "\nInvalid selection\n"
+
+    print "\n\n- - - - - -\n\n"

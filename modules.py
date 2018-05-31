@@ -1,5 +1,52 @@
 from PIL import Image
 
+threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
+threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
+
+# partition image into contiguous islands of the same color
+def imagePartition():
+    # get image name from user, open image
+    imName = raw_input("Image name (without extension):") 
+    imIn = Image.open("parsed/images/" + imName + ".png")
+    pixIn = imIn.load()
+    print "Image loaded successfully!"
+
+    # get image size and mode, print for debugging
+    wide, high = imIn.size
+    print wide, high
+    print imIn.mode
+
+    # array of "islands"
+    # array of boolean representing which pixels have already been hit
+    pixTchd = [[False] * wide for x in range(high)]
+
+    #parse through image, partition and print to terminal
+    i = 0
+    j = 0
+
+    islands = []
+    islandCnt = 0
+    queue = []
+
+    while j < high:
+        while i < wide:
+            # if pixel has not been touched, create a new island, add the
+            # pixel, then test all adjacent pixels, adding them to island
+            # if they have not been touched and have the same value. 
+            # Touch added pixels.
+            if pixTchd[i][j] == False:
+                islands += []
+                islands[islandsCnt] += (i,j)
+                # test up
+                if j > 0:
+                    if        
+
+            i+=1
+        i=0
+        j+=1
+
+
+
 # print parsed image to ASCII
 def asciiPrint():
     # get image name from user, open image
@@ -18,8 +65,8 @@ def asciiPrint():
     j = 0
     line = ""
 
-    threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
-    threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
+    #threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
+    #threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
 
     while j < high:
         while i < wide:
@@ -38,6 +85,8 @@ def asciiPrint():
         j+=1
 
     imIn.close()
+
+
 
 # load, desaturate, and scale image
 def imageParse(): 
@@ -79,8 +128,8 @@ def imageParse():
 
     # parse through output image, round up to nearest threshold
     pixOut = imOut.load()
-    #threshold = (0,31,63,95,127,159,191,223,255)
-    threshold = (0,15,31,47,63,80,95,111,127,191,255)
+    ##threshold = (0,31,63,95,127,159,191,223,255)
+    #threshold = (0,15,31,47,63,80,95,111,127,191,255)
     i = 0
     j = 0
     while j < highOut:
