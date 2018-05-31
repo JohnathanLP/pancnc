@@ -102,5 +102,5 @@ def imageParse():
     # save output image
     imOut.save("parsed/images/" + imName + ".png")
     # this should work, I'm not sure why it doesn't
-    #imOut.close()
+    imOut.close()
 
