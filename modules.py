@@ -11,63 +11,101 @@ def imagePartition():
     pixIn = imIn.load()
     print "Image loaded successfully!"
 
-    # get image size and mode, print for debugging
+    # get image size, print for debugging
     wide, high = imIn.size
     print wide, high
     print imIn.mode
 
-    # array of boolean representing which pixels have already been hit
-    pixTchd = [[False] * wide for x in range(high)]
-
-    # number of islands
-    islandCnt = 0
-
-    # pixel queue
-    queue = []
-
-    # parse through image, partition and print to terminal
+    islands = []
+    
+    # iterate through entire image, add each pixel to its own island   
     i = 0
     j = 0
     while j < high:
         while i < wide:
-            # if pixel has not been touched, touch it, create a new 
-            # island and add that pixel. add all neighbors of that pixel 
-            # to queue. parse through queue, if a pixel has not been 
-            # touched, and is the same value as the first pixel, touch 
-            # it, add it to the island, add all neighbors to queue. 
-            # remove current pixel from queue.
-        
-            if pixTchd[i][j] == False:
-                pixTchd[i][j] = True
-                queue.append((i,j))
-                x = i
-                y = j
-                while len(queue)>0:
-                    print "remaining in queue: " + str(len(queue))
-                    # test up
-                    if j>0:
-                        if pixTchd[x][y-1] == False and pixIn[x,y] == pixIn[x,y-1]:
-                            queue.append((x,y-1))
-                            pixTchd[x][y-1] = True
-                    # test right
-#                    if i<wide-1:
-
-                    # test down
-#                    if j<high-1:
-
-                    # test left
-#                    if i>0:
-
-
-                    queue.pop()
-
-            islandCnt += 1
-
+            islands.append([(i,j)])                    
             i+=1
         i=0
         j+=1
 
+    #for island in islands:
+    #    print(island)
+    #    for pix in island:
+    #        print(pixIn[pix[0], pix[1]])
+    
+    print("island partitioning is about to begin!")
+    print("there are now: " + str(len(islands)) + " islands")
 
+    # iterate through entire image, check neighbors for same color
+    # if neighbor is same color, check if same island
+    i = 0
+    j = 0
+    while j < high:
+        while i < wide:
+            currPix = pixIn[i,j][0]
+            # test right
+            if i < wide-1:
+                if currPix == pixIn[i+1,j][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i+1,j), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+            # test up
+            if j > 0:
+                if currPix == pixIn[i,j-1][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i,j-1), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+            # test left
+            if i > 0:
+                if currPix == pixIn[i-1,j][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i-1,j), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+            # test down
+            if j < high-1:
+                if currPix == pixIn[i,j+1][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i,j+1), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+
+            i+=1
+        i=0
+        j+=1
+   
+    print("island partitioning complete!")
+    print("there are now: " + str(len(islands)) + " islands")
+
+    fileOut = open("parsed/islands/" + imName + ".txt", "w+")
+
+    for island in islands:
+        fileOut.write("Island: " + str(islands.index(island)) + "\n")
+        fileOut.write("size: " + str(len(island)) + "\n")
+        #fileOut.write("value: " + str(pixIn[island[0][0],island[0][1]][0]) + "\n")
+        fileOut.write("value: " + str(islandValue(island, pixIn)) + "\n")
+        fileOut.write(str(island) + "\n\n\n")
+
+    fileOut.close()
+
+    imIn.close()
+
+
+# find which island contains a specific coordinate
+def searchIslands(coord, islands):
+    for island in islands:
+        if island.count(coord) > 0:
+            return islands.index(island)
+
+# get value of pixels in an island
+def islandValue(island, image):
+    return str(image[island[0][0],island[0][1]][0])
 
 # print parsed image to ASCII
 def asciiPrint():
@@ -86,9 +124,6 @@ def asciiPrint():
     i = 0
     j = 0
     line = ""
-
-    #threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
-    #threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
 
     while j < high:
         while i < wide:
