@@ -21,6 +21,7 @@ while not done:
     elif menu == "3":
         modules.imagePartition()
     elif menu == "4":
+        print "\nExiting..."
         done = True
     elif menu == "5":
         print "\nunimplemented\n"

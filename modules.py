@@ -16,30 +16,52 @@ def imagePartition():
     print wide, high
     print imIn.mode
 
-    # array of "islands"
     # array of boolean representing which pixels have already been hit
     pixTchd = [[False] * wide for x in range(high)]
 
-    #parse through image, partition and print to terminal
-    i = 0
-    j = 0
-
-    islands = []
+    # number of islands
     islandCnt = 0
+
+    # pixel queue
     queue = []
 
+    # parse through image, partition and print to terminal
+    i = 0
+    j = 0
     while j < high:
         while i < wide:
-            # if pixel has not been touched, create a new island, add the
-            # pixel, then test all adjacent pixels, adding them to island
-            # if they have not been touched and have the same value. 
-            # Touch added pixels.
+            # if pixel has not been touched, touch it, create a new 
+            # island and add that pixel. add all neighbors of that pixel 
+            # to queue. parse through queue, if a pixel has not been 
+            # touched, and is the same value as the first pixel, touch 
+            # it, add it to the island, add all neighbors to queue. 
+            # remove current pixel from queue.
+        
             if pixTchd[i][j] == False:
-                islands += []
-                islands[islandsCnt] += (i,j)
-                # test up
-                if j > 0:
-                    if        
+                pixTchd[i][j] = True
+                queue.append((i,j))
+                x = i
+                y = j
+                while len(queue)>0:
+                    print "remaining in queue: " + str(len(queue))
+                    # test up
+                    if j>0:
+                        if pixTchd[x][y-1] == False and pixIn[x,y] == pixIn[x,y-1]:
+                            queue.append((x,y-1))
+                            pixTchd[x][y-1] = True
+                    # test right
+#                    if i<wide-1:
+
+                    # test down
+#                    if j<high-1:
+
+                    # test left
+#                    if i>0:
+
+
+                    queue.pop()
+
+            islandCnt += 1
 
             i+=1
         i=0
