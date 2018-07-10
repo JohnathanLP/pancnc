@@ -3,6 +3,19 @@ from PIL import Image
 threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
 threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
 
+# print ascii image to terminal one island at a time
+def islandPrint():
+    # get image name from user, open image
+    imName = raw_input("Image name (without extension):") 
+    imIn = Image.open("parsed/images/" + imName + ".png")
+    pixIn = imIn.load()
+    print "Image loaded successfully!"
+
+    # get image size and mode, print for debugging
+    wide, high = imIn.size
+    print wide, high
+    print imIn.mode
+
 # partition image into contiguous islands of the same color
 def imagePartition():
     # get image name from user, open image
@@ -11,7 +24,7 @@ def imagePartition():
     pixIn = imIn.load()
     print "Image loaded successfully!"
 
-    # get image size, print for debugging
+    # get image size and mode, print for debugging
     wide, high = imIn.size
     print wide, high
     print imIn.mode
@@ -79,11 +92,21 @@ def imagePartition():
             i+=1
         i=0
         j+=1
-   
+
     print("island partitioning complete!")
     print("there are now: " + str(len(islands)) + " islands")
 
+    for island in islands:
+        if pixIn[island[0][0],island[0][1]][1] == 0:
+            islands.pop(islands.index(island))
+
+    print("transparency removed!")
+    print("there are now: " + str(len(islands)) + " islands")
+
     fileOut = open("parsed/islands/" + imName + ".txt", "w+")
+
+    for island in islands:
+        island.sort()
 
     for island in islands:
         fileOut.write("Island: " + str(islands.index(island)) + "\n")
