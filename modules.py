@@ -36,16 +36,11 @@ def imagePartition():
     j = 0
     while j < high:
         while i < wide:
-            islands.append([(i,j)])                    
+            islands.append([(i,j,pixIn[i,j][0])])                    
             i+=1
         i=0
         j+=1
 
-    #for island in islands:
-    #    print(island)
-    #    for pix in island:
-    #        print(pixIn[pix[0], pix[1]])
-    
     print("island partitioning is about to begin!")
     print("there are now: " + str(len(islands)) + " islands")
 
@@ -59,8 +54,8 @@ def imagePartition():
             # test right
             if i < wide-1:
                 if currPix == pixIn[i+1,j][0]:
-                    currIsland = searchIslands((i,j), islands)
-                    testIsland = searchIslands((i+1,j), islands)
+                    currIsland = searchIslands((i,j,pixIn[i,j][0]), islands)
+                    testIsland = searchIslands((i+1,j,pixIn[i+1,j][0]), islands)
                     if currIsland != testIsland:
                         islands[currIsland].extend(islands[testIsland])
                         islands.pop(testIsland)
@@ -172,7 +167,7 @@ def asciiPrint():
 def imageParse(): 
     # get image name from user, open image
     imName = raw_input("Image name (without extension):") 
-    imIn = Image.open(imName + ".png")
+    imIn = Image.open("input/" + imName + ".png")
     pixIn = imIn.load()
     print "Image loaded successfully!"
 
@@ -233,3 +228,19 @@ def imageParse():
     # this should work, I'm not sure why it doesn't
     imOut.close()
 
+# convert png image to RGBA png file
+def convertImage():
+    # get image name from user, open image
+    imName = raw_input("Image name (without extension):") 
+    imIn = Image.open(imName + ".png")
+    print "Image loaded successfully!"
+
+    # get image size and mode, print for debugging
+    wide, high = imIn.size
+    print wide, high
+    print imIn.mode
+
+    # convert image
+    imIn.convert("RGBA").save(imName + "_converted.png")
+
+    imIn.close()
