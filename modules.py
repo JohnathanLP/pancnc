@@ -1,4 +1,5 @@
 from PIL import Image
+import time
 
 threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
 threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
@@ -7,14 +8,65 @@ threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
 def islandPrint():
     # get image name from user, open image
     imName = raw_input("Image name (without extension):") 
-    imIn = Image.open("parsed/images/" + imName + ".png")
-    pixIn = imIn.load()
-    print "Image loaded successfully!"
+    fileIn = open("parsed/instructions/" + imName + ".txt")
+    print("Instructions file opened successfully\n\n")
+    # print fileIn.read()
+    
+    wide, high = fileIn.readline().split(',',1)
 
-    # get image size and mode, print for debugging
-    wide, high = imIn.size
-    print wide, high
-    print imIn.mode
+    wide = int(wide)
+    high = int(high)
+
+    print wide
+    print high
+    shade = -1
+
+    # create blank simulated print surface
+    printer = []
+    for i in range(0,high):
+        temp = []
+        for j in range(0,wide):
+            temp.append(" ")
+        printer.append(temp)
+
+
+    print("beginning print")
+
+    for line in fileIn:
+        # coords
+        if "," in line:
+#            print ("coord\n")
+            x,y = line.split(',',1)
+            x = int(x)
+            y = int(y)
+            printer[x][y] = threschar[threshold.index(shade)]
+
+        else:
+            if int(line) > 0:
+#                print ("shade\n")
+                shade = int(line)
+#            else:
+#                print ("EOI\n")
+
+#        print printer
+
+        # display progress
+        output = "\n\n\n\n-----\n\n\n\n"
+        for i in range(0,high):
+            temp = ""
+            for j in range(0,wide):
+                temp += printer[i][j]
+                temp += " "
+            output += (temp + "\n")
+        
+        print output
+        time.sleep(.05)
+    
+        
+                
+
+    fileIn.close()
+    
 
 # partition image into contiguous islands of the same color
 def imagePartition():
@@ -36,7 +88,7 @@ def imagePartition():
     j = 0
     while j < high:
         while i < wide:
-            islands.append([(i,j,pixIn[i,j][0])])                    
+            islands.append([(i,j)])                    
             i+=1
         i=0
         j+=1
@@ -98,19 +150,48 @@ def imagePartition():
     print("transparency removed!")
     print("there are now: " + str(len(islands)) + " islands")
 
-    fileOut = open("parsed/islands/" + imName + ".txt", "w+")
 
+    # sort islands from darkest to lightest
+    sorted = False
+    while sorted == False:
+        sorted = True
+        iter = 0
+        while iter < len(islands)-1:
+            first  = pixIn[islands[iter][0][0], islands[iter][0][1]]
+            second = pixIn[islands[iter+1][0][0], islands[iter+1][0][1]]
+            if first > second:
+                temp = islands[iter]
+                islands[iter] = islands[iter+1]
+                islands[iter+1] = temp
+                sorted = False
+            iter += 1
+
+    # sort pixels within each island left to right, top to bottom
     for island in islands:
         island.sort()
 
+    reportOut = open("parsed/islands/" + imName + ".txt", "w+")
+    
+    # create file with user-friendly report on each island
     for island in islands:
-        fileOut.write("Island: " + str(islands.index(island)) + "\n")
-        fileOut.write("size: " + str(len(island)) + "\n")
-        #fileOut.write("value: " + str(pixIn[island[0][0],island[0][1]][0]) + "\n")
-        fileOut.write("value: " + str(islandValue(island, pixIn)) + "\n")
-        fileOut.write(str(island) + "\n\n\n")
+        reportOut.write("Island: " + str(islands.index(island)) + "\n")
+        reportOut.write("size: " + str(len(island)) + "\n")
+        reportOut.write("value: " + str(islandValue(island, pixIn)) + "\n")
+        reportOut.write(str(island) + "\n\n\n")
 
-    fileOut.close()
+    reportOut.close()
+
+    instrOut = open("parsed/instructions/" + imName + ".txt", "w+")
+    
+    # create file with machine-friendly instructions to print image
+    instrOut.write(str(wide) + "," + str(high) + "\n")
+    for island in islands:
+        instrOut.write(str(pixIn[island[0][0], island[0][1]][0]) + "\n")
+        for pixel in island:
+            instrOut.write(str(pixel[0]) + "," + str(pixel[1]) + "\n")
+        instrOut.write(str(-1) + "\n")    
+
+    instrOut.close()
 
     imIn.close()
 
@@ -244,3 +325,5 @@ def convertImage():
     imIn.convert("RGBA").save(imName + "_converted.png")
 
     imIn.close()
+
+
