@@ -12,6 +12,7 @@ while not done:
     print "3 Partition an image into contiguous islands"
     print "4 Print an image to ASCII art in terminal, one \"island\" at a time"
     print "5 Convert .png file to RGBA"
+    print "6 Calibrate threshold values"
     print "9 Quit"
 
     menu = raw_input()
@@ -27,7 +28,7 @@ while not done:
     elif menu == "5":
         modules.convertImage()
     elif menu == "6":
-        print "\nunimplemented\n"
+        modules.calibrateThresh()
     elif menu == "7":
         print "\nunimplemented\n"
     elif menu == "8":

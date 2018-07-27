@@ -1,8 +1,56 @@
 from PIL import Image
 import time
 
-threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
-threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
+#threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
+#threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
+
+threshold = [0,   31,  62,  93,  125, 156, 187, 218, 255]
+threschar = ['@', '%', '#', '+', '=', '-', ':', '^', '.']
+
+
+# calibrate threshold values to get the best resolution
+def calibrateThresh():
+    # get image name from user, open image
+    imName = raw_input("Image name (without extension):") 
+    imIn = Image.open("input/" + imName + ".png")
+    pixIn = imIn.load()
+    print "Image loaded successfully!"
+
+    # get image size and mode, print for debugging
+    wide, high = imIn.size
+    print wide, high
+    print imIn.mode
+
+    shades = []
+    for j in range(0,high):
+        for i in range(0,wide):
+            ave =  pixIn[i,j][0] + pixIn[i,j][1] + pixIn[i,j][2]
+#            if pixIn[i,j][3] > 0:
+            shades.append(int(ave/3))
+
+    threshold[4] = rangeAverage(shades, 0, 255)
+    threshold[2] = rangeAverage(shades, 0, threshold[4])
+    threshold[6] = rangeAverage(shades, threshold[4], 255)
+
+    threshold[1] = rangeAverage(shades, 0, threshold[2])
+    threshold[3] = rangeAverage(shades, threshold[2], threshold[4])
+    threshold[5] = rangeAverage(shades, threshold[4], threshold[6])
+    threshold[7] = rangeAverage(shades, threshold[6], 255)
+
+    imIn.close()
+
+
+# given an array of numbers and a range, find the average, considering only
+# numbers within the range
+def rangeAverage(numbers, rangeMin, rangeMax):
+    rSum = 0
+    count = 0
+    for number in numbers:
+        if number >= rangeMin and number <=rangeMax:
+            rSum += number
+            count += 1
+    return int(rSum/count)
+
 
 # print ascii image to terminal one island at a time
 def islandPrint():
@@ -52,9 +100,9 @@ def islandPrint():
 
         # display progress
         output = "\n\n\n\n-----\n\n\n\n"
-        for i in range(0,high):
+        for j in range(0,high):
             temp = ""
-            for j in range(0,wide):
+            for i in range(0,wide):
                 temp += printer[i][j]
                 temp += " "
             output += (temp + "\n")
@@ -284,8 +332,6 @@ def imageParse():
 
     # parse through output image, round up to nearest threshold
     pixOut = imOut.load()
-    ##threshold = (0,31,63,95,127,159,191,223,255)
-    #threshold = (0,15,31,47,63,80,95,111,127,191,255)
     i = 0
     j = 0
     while j < highOut:
