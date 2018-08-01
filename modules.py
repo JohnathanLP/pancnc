@@ -4,8 +4,11 @@ import time
 #threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
 #threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
 
-threshold = [0,   31,  62,  93,  125, 156, 187, 218, 255]
-threschar = ['@', '%', '#', '+', '=', '-', ':', '^', '.']
+#threshold = [0,   31,  62,  93,  125, 156, 187, 218, 255]
+#threschar = ['@', '%', '#', '+', '=', '-', ':', '^', '.']
+
+threshold = [0,   62,  125, 187, 255]
+threschar = ['@', '#', '=', ':', '.']
 
 
 # calibrate threshold values to get the best resolution
@@ -28,14 +31,17 @@ def calibrateThresh():
 #            if pixIn[i,j][3] > 0:
             shades.append(int(ave/3))
 
-    threshold[4] = rangeAverage(shades, 0, 255)
-    threshold[2] = rangeAverage(shades, 0, threshold[4])
-    threshold[6] = rangeAverage(shades, threshold[4], 255)
+#    threshold[4] = rangeAverage(shades, 0, 255)
+#    threshold[2] = rangeAverage(shades, 0, threshold[4])
+#    threshold[6] = rangeAverage(shades, threshold[4], 255)
+#    threshold[1] = rangeAverage(shades, 0, threshold[2])
+#    threshold[3] = rangeAverage(shades, threshold[2], threshold[4])
+#    threshold[5] = rangeAverage(shades, threshold[4], threshold[6])
+#    threshold[7] = rangeAverage(shades, threshold[6], 255)
 
+    threshold[2] = rangeAverage(shades, 0, 255)
     threshold[1] = rangeAverage(shades, 0, threshold[2])
-    threshold[3] = rangeAverage(shades, threshold[2], threshold[4])
-    threshold[5] = rangeAverage(shades, threshold[4], threshold[6])
-    threshold[7] = rangeAverage(shades, threshold[6], 255)
+    threshold[3] = rangeAverage(shades, threshold[2], 255)
 
     imIn.close()
 
