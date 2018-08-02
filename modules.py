@@ -10,6 +10,124 @@ import time
 threshold = [0,   62,  125, 187, 255]
 threschar = ['@', '#', '=', ':', '.']
 
+imgName  = ""
+rawImg   = None
+rawPix   = None
+rawWide  = None
+rawHigh  = None
+
+parsImg  = None
+parsPix  = None
+# TODO Allow for different sizes/resolutions
+parsHigh = 32
+parsWide = 32
+
+# loads an image
+def loadImage():
+    global imgName
+    global rawImg
+    global rawPix
+    global rawWide
+    global rawHigh
+
+    imgName = raw_input("Image name (without extension):") 
+    rawImg = Image.open("input/" + imgName + ".png")
+    rawPix = rawImg.load()
+    # TODO check for load failure, image not existing
+    print "Image loaded successfully!"
+
+    # report image size and mode
+    rawWide, rawHigh = rawImg.size
+    print "Dimensions: " + str(rawWide) + ", " + str(rawHigh)
+    print "Image Mode: " + rawImg.mode
+
+# reports currently loaded image
+def reportImage():
+    global imgName
+
+    if imgName == "":
+        print "No image loaded"
+    else:
+        print "Image loaded: " + imgName + ".png"
+
+# load, desaturate, and scale image
+def parseImage(): 
+    global imgName
+    global rawImg
+    global rawPix
+    global rawWide
+    global rawHigh
+
+    global parsImg
+    global parsPix
+    global parsWide
+    global parsHigh
+
+    # create output image
+    parsImg = rawImg
+    parsPix = parsImg.load()
+
+    # scale output image to desired size
+    parsImg = parsImg.resize((parsWide, parsHigh))
+
+    # convert output image to black and white image
+    parsImg = parsImg.convert("LA")
+
+    # parse through output image, round up to nearest threshold
+    parsPix = parsImg.load()
+    i = 0
+    j = 0
+    while j < parsHigh:
+        while i < parsWide:
+            val = parsPix[i,j]
+            # if pixel is transparent, set it to white and full transparent
+            if val[1] == 0:
+                parsPix[i,j] = (255,0)
+            # otherwise round and set to full opaque
+            else:
+                for thresh in threshold:
+                    if val[0] < thresh:
+                        parsPix[i,j] = (thresh, 255)
+                        break
+            i+=1
+        i=0
+        j+=1
+
+    # save output image
+    parsImg.save("parsed/images/" + imgName + ".png")
+    # this should work, I'm not sure why it doesn't
+    parsImg.close()
+
+
+# print parsed image to ASCII
+def previewImage():
+    global parsPix
+    global parsHigh
+    global parsWide
+
+    #parse through image, print to terminal
+    line = ""
+    # TODO Clean this up
+    
+    for j in range(0,parsHigh):
+        for i in range(0,parsWide):
+            val = parsPix[i,j]
+            if val[1] != 0:
+                for thresh in threshold:
+                    if val[0] == thresh:
+                        line += threschar[threshold.index(thresh)].ljust(2)
+            else:
+                line += "  "
+            i+=1
+        print line
+        line = ""
+        i=0
+        j+=1
+
+
+
+#--------------------
+
 
 # calibrate threshold values to get the best resolution
 def calibrateThresh():
@@ -260,106 +378,9 @@ def searchIslands(coord, islands):
 def islandValue(island, image):
     return str(image[island[0][0],island[0][1]][0])
 
-# print parsed image to ASCII
-def asciiPrint():
-    # get image name from user, open image
-    imName = raw_input("Image name (without extension):") 
-    imIn = Image.open("parsed/images/" + imName + ".png")
-    pixIn = imIn.load()
-    print "Image loaded successfully!"
-
-    # get image size and mode, print for debugging
-    wide, high = imIn.size
-    print wide, high
-    print imIn.mode
-
-    #parse through image, print to terminal
-    i = 0
-    j = 0
-    line = ""
-
-    while j < high:
-        while i < wide:
-            val = pixIn[i,j]
-            if val[1] != 0:
-                for thresh in threshold:
-                    if val[0] == thresh:
-                        line += threschar[threshold.index(thresh)].ljust(2)
-                #line += str(val[0]).ljust(4)
-            else:
-                line += "  "
-            i+=1
-        print line
-        line = ""
-        i=0
-        j+=1
-
-    imIn.close()
 
 
 
-# load, desaturate, and scale image
-def imageParse(): 
-    # get image name from user, open image
-    imName = raw_input("Image name (without extension):") 
-    imIn = Image.open("input/" + imName + ".png")
-    pixIn = imIn.load()
-    print "Image loaded successfully!"
-
-    # get image size and mode, print for debugging
-    wide, high = imIn.size
-    print wide, high
-    print imIn.mode
-
-    # create output image
-    imOut = Image.new("RGBA", (wide,high), "white")
-    pixOut = imOut.load()
-
-    # parse through image, replace RGB values with an average
-    i = 0
-    j = 0
-    while j < high:
-      while i < wide: 
-        pixOut[i,j] = pixIn[i,j]
-        ave = pixIn[i,j][0]+pixIn[i,j][1]+pixIn[i,j][2]
-        ave /= 3
-        pixOut[i,j] = (ave,ave,ave, pixIn[i,j][3])
-        i+=1
-      i=0
-      j+=1
-
-    # scale output image to desired size
-    wideOut = 32
-    highOut = 32
-    imOut = imOut.resize((wideOut,highOut))
-
-    # convert output image to black and white image
-    imOut = imOut.convert("LA")
-
-    # parse through output image, round up to nearest threshold
-    pixOut = imOut.load()
-    i = 0
-    j = 0
-    while j < highOut:
-        while i < wideOut:
-            val = pixOut[i,j]
-            # if pixel is transparent, set it to white and full transparent
-            if val[1] == 0:
-                pixOut[i,j] = (255,0)
-            # otherwise round and set to full opaque
-            else:
-                for thresh in threshold:
-                    if val[0] < thresh:
-                        pixOut[i,j] = (thresh, 255)
-                        break
-            i+=1
-        i=0
-        j+=1
-
-    # save output image
-    imOut.save("parsed/images/" + imName + ".png")
-    # this should work, I'm not sure why it doesn't
-    imOut.close()
 
 # convert png image to RGBA png file
 def convertImage():
@@ -377,5 +398,3 @@ def convertImage():
     imIn.convert("RGBA").save(imName + "_converted.png")
 
     imIn.close()
-
-

@@ -6,23 +6,23 @@ done = False
 print "Welcome\n"
 
 while not done:
+    modules.reportImage()
+    print "\n"
+
     print "Select option:\n"
-    print "1 Load, desaturate and scale image"
-    print "2 Print an image to ASCII art in terminal"
-    print "3 Partition an image into contiguous islands"
-    print "4 Print an image to ASCII art in terminal, one \"island\" at a time"
-    print "5 Convert .png file to RGBA"
-    print "6 Calibrate threshold values"
+    print "1 Load image"
+    print "2 Scale, desaturate, and decontrast loaded image"
+    print "3 Print ASCII image"
     print "9 Quit"
 
     menu = raw_input()
 
     if menu == "1":
-        modules.imageParse()
+        modules.loadImage()
     elif menu == "2":
-        modules.asciiPrint()
+        modules.parseImage()
     elif menu == "3":
-        modules.imagePartition()
+        modules.previewImage()
     elif menu == "4":
         modules.islandPrint()
     elif menu == "5":
@@ -30,7 +30,7 @@ while not done:
     elif menu == "6":
         modules.calibrateThresh()
     elif menu == "7":
-        print "\nunimplemented\n"
+        modules.loadImage()
     elif menu == "8":
         print "\nunimplemented\n"
     elif menu == "9":
