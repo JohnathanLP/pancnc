@@ -11,8 +11,11 @@ while not done:
 
     print "Select option:\n"
     print "1 Load image"
-    print "2 Scale, desaturate, and decontrast loaded image"
+    print "2 Scale and desaturate image"
     print "3 Print ASCII image"
+    print "4 Partition image into islands"
+    print "5 Simulate printing image"
+    print "8 Fully process image"
     print "9 Quit"
 
     menu = raw_input()
@@ -24,17 +27,21 @@ while not done:
     elif menu == "3":
         modules.previewImage()
     elif menu == "4":
-        modules.islandPrint()
+        modules.partitionImage()
     elif menu == "5":
-        modules.convertImage()
+        modules.printImage()
     elif menu == "6":
-        modules.calibrateThresh()
-    elif menu == "7":
-        modules.loadImage()
-    elif menu == "8":
         print "\nunimplemented\n"
+    elif menu == "7":
+        print "\nunimplemented\n"
+    elif menu == "8":
+        modules.loadImage()
+        modules.parseImage()
+        modules.previewImage()
+        modules.partitionImage()
     elif menu == "9":
         print "\nExiting\n"
+        modules.closeImages()
         done = True
     else:
         print "\nInvalid selection\n"
