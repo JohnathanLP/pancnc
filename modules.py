@@ -18,7 +18,7 @@ rawHigh  = None
 
 parsImg  = None
 parsPix  = None
-# TODO Allow for different sizes/resolutions
+# TODO Allow for different sizes/resolutions/ratios
 parsHigh = 32
 parsWide = 32
 
@@ -168,6 +168,38 @@ def partitionImage():
     print("transparency removed!")
     print("there are now: " + str(len(islands)) + " islands")
 
+    # sort pixels within each island left to right, top to bottom
+    for island in islands:
+        island.sort()
+
+    # sort islands by start point from left to right, top to bottom
+    sorted = False
+    while sorted == False:
+        sorted = True
+        iter = 0
+        while iter < len(islands)-1:
+            first = islands[iter][0][0]
+            second = islands[iter+1][0][0]
+            if first > second:
+                temp = islands[iter]
+                islands[iter] = islands[iter+1]
+                islands[iter+1] = temp
+                sorted = False
+            iter += 1
+
+    sorted = False
+    while sorted == False:
+        sorted = True
+        iter = 0
+        while iter < len(islands)-1:
+            first = islands[iter][0][1]
+            second = islands[iter+1][0][1]
+            if first > second:
+                temp = islands[iter]
+                islands[iter] = islands[iter+1]
+                islands[iter+1] = temp
+                sorted = False
+            iter += 1
 
     # sort islands from darkest to lightest
     sorted = False
@@ -184,9 +216,6 @@ def partitionImage():
                 sorted = False
             iter += 1
 
-    # sort pixels within each island left to right, top to bottom
-    for island in islands:
-        island.sort()
 
     reportOut = open("parsed/islands/" + imgName + ".txt", "w+")
     
@@ -291,74 +320,3 @@ def searchIslands(coord, islands):
 # get value of pixels in an island
 def islandValue(island, image):
     return str(image[island[0][0],island[0][1]][0])
-
-#--------------------#
-
-# calibrate threshold values to get the best resolution
-def calibrateThresh():
-    # get image name from user, open image
-    imName = raw_input("Image name (without extension):") 
-    imIn = Image.open("input/" + imName + ".png")
-    pixIn = imIn.load()
-    print "Image loaded successfully!"
-
-    # get image size and mode, print for debugging
-    wide, high = imIn.size
-    print wide, high
-    print imIn.mode
-
-    shades = []
-    for j in range(0,high):
-        for i in range(0,wide):
-            ave =  pixIn[i,j][0] + pixIn[i,j][1] + pixIn[i,j][2]
-#            if pixIn[i,j][3] > 0:
-            shades.append(int(ave/3))
-
-#    threshold[4] = rangeAverage(shades, 0, 255)
-#    threshold[2] = rangeAverage(shades, 0, threshold[4])
-#    threshold[6] = rangeAverage(shades, threshold[4], 255)
-#    threshold[1] = rangeAverage(shades, 0, threshold[2])
-#    threshold[3] = rangeAverage(shades, threshold[2], threshold[4])
-#    threshold[5] = rangeAverage(shades, threshold[4], threshold[6])
-#    threshold[7] = rangeAverage(shades, threshold[6], 255)
-
-    threshold[2] = rangeAverage(shades, 0, 255)
-    threshold[1] = rangeAverage(shades, 0, threshold[2])
-    threshold[3] = rangeAverage(shades, threshold[2], 255)
-
-    imIn.close()
-
-
-# given an array of numbers and a range, find the average, considering only
-# numbers within the range
-def rangeAverage(numbers, rangeMin, rangeMax):
-    rSum = 0
-    count = 0
-    for number in numbers:
-        if number >= rangeMin and number <=rangeMax:
-            rSum += number
-            count += 1
-    return int(rSum/count)
-
-
-
-
-
-
-
-# convert png image to RGBA png file
-def convertImage():
-    # get image name from user, open image
-    imName = raw_input("Image name (without extension):") 
-    imIn = Image.open(imName + ".png")
-    print "Image loaded successfully!"
-
-    # get image size and mode, print for debugging
-    wide, high = imIn.size
-    print wide, high
-    print imIn.mode
-
-    # convert image
-    imIn.convert("RGBA").save(imName + "_converted.png")
-
-    imIn.close()
