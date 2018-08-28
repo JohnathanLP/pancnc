@@ -1,4 +1,5 @@
 from PIL import Image
+from os import system
 import time
 
 #threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
@@ -21,6 +22,8 @@ parsPix  = None
 # TODO Allow for different sizes/resolutions/ratios
 parsHigh = 32
 parsWide = 32
+
+delay = .01
 
 # loads an image
 def loadImage():
@@ -158,6 +161,43 @@ def partitionImage():
                         islands[currIsland].extend(islands[testIsland])
                         islands.pop(testIsland)
 
+            # test up, right
+            if j > 0 and i < parsWide-1:
+                if currPix == parsPix[i+1,j-1][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i+1,j-1), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+            
+            # test up, left
+            if j > 0 and i > 0:
+                if currPix == parsPix[i-1,j-1][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i-1,j-1), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+            
+            # test down, left
+            if j < parsHigh-1 and i > 0:
+                if currPix == parsPix[i-1,j+1][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i-1,j+1), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+            
+            # test down, right
+            if j < parsHigh-1 and i < parsWide-1:
+                if currPix == parsPix[i+1,j+1][0]:
+                    currIsland = searchIslands((i,j), islands)
+                    testIsland = searchIslands((i+1,j+1), islands)
+                    if currIsland != testIsland:
+                        islands[currIsland].extend(islands[testIsland])
+                        islands.pop(testIsland)
+
+
     print("island partitioning complete!")
     print("there are now: " + str(len(islands)) + " islands")
 
@@ -207,8 +247,8 @@ def partitionImage():
         sorted = True
         iter = 0
         while iter < len(islands)-1:
-            first  = parsPix[islands[iter][0][0], islands[iter][0][1]]
-            second = parsPix[islands[iter+1][0][0], islands[iter+1][0][1]]
+            first  = roundToThresh(parsPix[islands[iter][0][0], islands[iter][0][1]][0])
+            second = roundToThresh(parsPix[islands[iter+1][0][0], islands[iter+1][0][1]][0])
             if first > second:
                 temp = islands[iter]
                 islands[iter] = islands[iter+1]
@@ -244,6 +284,7 @@ def partitionImage():
 # print ascii image to terminal one island at a time
 def printImage():
     global imgName
+    global delay
    
     # TODO test for file open failure
     fileIn = open("parsed/instructions/" + imgName + ".txt")
@@ -265,7 +306,7 @@ def printImage():
             temp.append(" ")
         printer.append(temp)
 
-
+    # TODO determine why panda belly won't print
     print("beginning print")
 
     for line in fileIn:
@@ -277,7 +318,9 @@ def printImage():
             printer[x][y] = threschar[threshold.index(shade)]
 
         else:
-            if int(line) >= 0:
+            # end of island (-1) ignored
+            # shade
+            if int(line) != -1:
                 shade = int(line)
                 shade = roundToThresh(shade)
 
@@ -286,12 +329,12 @@ def printImage():
         for j in range(0,high):
             temp = ""
             for i in range(0,wide):
-                temp += printer[i][j]
-                temp += " "
+                temp += printer[i][j].ljust(2)
             output += (temp + "\n")
         
         print output
-        time.sleep(.05)
+        time.sleep(delay)
+        system('clear')
     
     fileIn.close()
 
@@ -307,6 +350,7 @@ def closeImages():
 #--------------------#
 
 def roundToThresh(valIn):
+    global threshold
     for thresh in threshold:
         if valIn <= thresh:
             return thresh
