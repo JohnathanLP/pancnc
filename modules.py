@@ -11,6 +11,7 @@ import time
 threshold = [0,   62,  125, 187, 255]
 threschar = ['@', '#', '=', ':', '.']
 
+# Variables to store information about the currently loaded image file
 imgName  = ""
 rawImg   = None
 rawPix   = None
@@ -227,6 +228,8 @@ def partitionImage():
                 sorted = False
             iter += 1
 
+    The file will beginw with a code denoting the verstion of the language
+    used. This will in the future be used to determineV
     sorted = False
     while sorted == False:
         sorted = True
@@ -268,9 +271,9 @@ def partitionImage():
 
     reportOut.close()
 
-    instrOut = open("parsed/instructions/" + imgName + ".txt", "w+")
+    instrOut = open("parsed/simulator/" + imgName + ".txt", "w+")
     
-    # create file with machine-friendly instructions to print image
+    # create file with simulator-friendly instructions to print image
     instrOut.write(str(parsWide) + "," + str(parsHigh) + "\n")
     for island in islands:
         instrOut.write(str(parsPix[island[0][0], island[0][1]][0]) + "\n")
