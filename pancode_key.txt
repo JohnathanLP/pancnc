@@ -10,20 +10,23 @@
 
 M X Y
 // Move command - args: X and Y are coords, given in mm. Moves head to X,Y, 
-// reletive to Home
+// reletive to Home. Non-blocking.
 
-E R
-// Manual extrude command - args: R is amount, given in rotations, to 
-// advance the extruder. R may be negative to retract.
+E R T
+// Manual extrude command - args: R is rate, given in rotations per second,
+// to advance the extruder. T is is the amount, given in rotations, to 
+// advance the extruder. T may be negative to retract. Blocking.
 
 C R
 // Continuous extrude command - args: R is rate, given in rotations per
 // second, to advance the extruder. Continues until a manual extrude command
-// is given, or until command is called again. Set R to 0 to stop.
+// is given, or until command is called again. Set R to 0 to stop. Non-
+// blocking.
 
 D T
-// Delay command - args: T is the time, given in seconds, to delay.
+// Delay command - args: T is the time, given in seconds, to delay. Blocking.
 
 T F D
 // Tone command - args: F is the frequency of the tone, given in hertz,
-// D is the duration, given in seconds. D may be less than 1.
+// D is the duration, given in seconds. D may be less than 1. Ideally non-
+// blocking.

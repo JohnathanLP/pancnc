@@ -81,6 +81,8 @@ def parseImage():
             else:
                 parsPix[i,j] = (parsPix[i,j][0], 255)
 
+    # TODO Mirror image
+
     # save output image
     parsImg.save("parsed/images/" + imgName + ".png")
 
@@ -228,8 +230,6 @@ def partitionImage():
                 sorted = False
             iter += 1
 
-    The file will beginw with a code denoting the verstion of the language
-    used. This will in the future be used to determineV
     sorted = False
     while sorted == False:
         sorted = True
@@ -260,9 +260,10 @@ def partitionImage():
             iter += 1
 
 
+    # TODO remove this
+    # create file with user-friendly report on each island
     reportOut = open("parsed/islands/" + imgName + ".txt", "w+")
     
-    # create file with user-friendly report on each island
     for island in islands:
         reportOut.write("Island: " + str(islands.index(island)) + "\n")
         reportOut.write("size: " + str(len(island)) + "\n")
@@ -271,18 +272,48 @@ def partitionImage():
 
     reportOut.close()
 
+    # TODO remove this
+    # create file with simulator-friendly instructions to print image
     instrOut = open("parsed/simulator/" + imgName + ".txt", "w+")
     
-    # create file with simulator-friendly instructions to print image
     instrOut.write(str(parsWide) + "," + str(parsHigh) + "\n")
     for island in islands:
         instrOut.write(str(parsPix[island[0][0], island[0][1]][0]) + "\n")
         for pixel in island:
             instrOut.write(str(pixel[0]) + "," + str(pixel[1]) + "\n")
         instrOut.write(str(-1) + "\n")    
-
+    
     instrOut.close()
 
+    # create file with machine-friendly instructions to print pancake
+    codeOut = open("parsed/pancode/" + imgName + ".pncde", "w+")
+
+    # first line reserved for version, etc.
+    codeOut.write("pancode version 1.0\n")
+    codeOut.write("start\n")
+
+    # iterate through each island
+    for island in islands:
+        # iterate through each pixel
+        for pixel in island:
+            # move to pixel
+            # TODO make this configurable
+            mmperpixel = 1
+            codeOut.write("M " + str(pixel[0] * mmperpixel) + " " + str(pixel[1] * mmperpixel) + "\n")
+            # extrude then retract some to prevent drips
+            # TODO make this configurable
+            codeOut.write("E 1 1\n")
+            codeOut.write("E -1 .5\n")
+
+        # delay before moving to next island
+        # TODO Fix this - should pause between shades, not islands
+        # May require rewrite of partitioning, which honestly should
+        # be done anyway, it looks like it was written by an entire
+        # troop of monkeys.
+        codeOut.write("D 10\n")
+
+    codeOut.write("end\n")
+    codeOut.close()
 
 # print ascii image to terminal one island at a time
 def printImage():
@@ -290,7 +321,7 @@ def printImage():
     global delay
    
     # TODO test for file open failure
-    fileIn = open("parsed/instructions/" + imgName + ".txt")
+    fileIn = open("parsed/simulator/" + imgName + ".txt")
     print("Instructions file opened successfully\n\n")
     
     wide, high = fileIn.readline().split(',',1)
