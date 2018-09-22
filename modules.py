@@ -286,11 +286,17 @@ def partitionImage():
     instrOut.close()
 
     # create file with machine-friendly instructions to print pancake
-    codeOut = open("parsed/pancode/" + imgName + ".pncde", "w+")
+    codeOut = open("parsed/pcode/" + imgName + ".pcode", "w+")
 
     # first line reserved for version, etc.
     codeOut.write("pancode version 1.0\n")
+    
+    # second line reserved for dimensions (in pixels)
+    codeOut.write(str(parsWide) + "," + str(parsHigh) + "\n")
+    
     codeOut.write("start\n")
+
+    lastShade = 255
 
     # iterate through each island
     for island in islands:
@@ -310,20 +316,27 @@ def partitionImage():
         # May require rewrite of partitioning, which honestly should
         # be done anyway, it looks like it was written by an entire
         # troop of monkeys.
-        codeOut.write("D 10\n")
+        if roundToThresh(parsPix[island[0][0], island[0][1]][0]) != lastShade:
+            codeOut.write("D 10\n")
+        lastShade = roundToThresh(parsPix[island[0][0], island[0][1]][0])
 
     codeOut.write("end\n")
     codeOut.close()
 
 # print ascii image to terminal one island at a time
+# TODO Convert this to use pcode file
 def printImage():
     global imgName
     global delay
    
     # TODO test for file open failure
-    fileIn = open("parsed/simulator/" + imgName + ".txt")
+    fileIn = open("parsed/pcode/" + imgName + ".pcode")
     print("Instructions file opened successfully\n\n")
     
+    # ignore first line
+    # TODO Version checking for GCode version
+    fileIn.readline()
+
     wide, high = fileIn.readline().split(',',1)
     print "Dimensions: "+ wide + ", " + high
     
@@ -340,30 +353,49 @@ def printImage():
             temp.append(" ")
         printer.append(temp)
 
-    # TODO determine why panda belly won't print
-    print("beginning print")
+    # represents the location of the extruder
+    posX = 0
+    posY = 0
 
     for line in fileIn:
-        # coords
-        if "," in line:
-            x,y = line.split(',',1)
-            x = int(x)
-            y = int(y)
-            printer[x][y] = threschar[threshold.index(shade)]
+        # split line into args
+        args = line.split()
 
-        else:
-            # end of island (-1) ignored
-            # shade
-            if int(line) != -1:
-                shade = int(line)
-                shade = roundToThresh(shade)
+        # start command
+        if args[0] == "start":
+            print "Beginning print"
+
+        # end command
+        elif args[0] == "end":
+            # TODO terminate print
+            print "Print complete!"
+
+        # move command
+        elif args[0] == "M":
+            posX = int(args[1])
+            posY = int(args[2])
+
+        # manual extrude command
+        elif args[0] == "E":
+            printer[posX][posY] = 0
+            
+        # continuous extrude command
+
+        # delay command
+        elif args[0] == "D":
+            for j in range(0,high):
+                for i in range(0,wide):
+                    if printer[i][j] != " ":
+                        printer[i][j] += 1
+
+        # tone command
 
         # display progress
         output = "\n\n\n\n-----\n\n\n\n"
         for j in range(0,high):
             temp = ""
             for i in range(0,wide):
-                temp += printer[i][j].ljust(2)
+                temp += str(printer[i][j]).ljust(2)
             output += (temp + "\n")
         
         print output
