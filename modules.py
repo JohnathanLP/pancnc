@@ -24,6 +24,8 @@ parsPix  = None
 parsHigh = 32
 parsWide = 32
 
+numThresh = 10
+
 delay = .01
 
 # loads an image
@@ -35,9 +37,13 @@ def loadImage():
     global rawHigh
 
     imgName = raw_input("Image name (without extension):") 
-    rawImg = Image.open("input/" + imgName + ".png")
+    try:
+        rawImg = Image.open("input/" + imgName + ".png")
+    except:
+        print "file failed to open"
+        imgName = ""
+        return
     rawPix = rawImg.load()
-    # TODO check for load failure, image not existing
     print "Image loaded successfully!"
 
     # report image size and mode
@@ -133,7 +139,7 @@ def partitionImage():
             currPix = parsPix[i,j][0]
             # test right
             if i < parsWide-1:
-                if currPix == parsPix[i+1,j][0]:
+                if roundToThresh(currPix) == roundToThresh(parsPix[i+1,j][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i+1,j), islands)
                     if currIsland != testIsland:
@@ -141,7 +147,7 @@ def partitionImage():
                         islands.pop(testIsland)
             # test up
             if j > 0:
-                if currPix == parsPix[i,j-1][0]:
+                if roundToThresh(currPix) == roundToThresh(parsPix[i,j-1][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i,j-1), islands)
                     if currIsland != testIsland:
@@ -149,7 +155,7 @@ def partitionImage():
                         islands.pop(testIsland)
             # test left
             if i > 0:
-                if currPix == parsPix[i-1,j][0]:
+                if roundToThresh(currPix) == roundToThresh(parsPix[i-1,j][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i-1,j), islands)
                     if currIsland != testIsland:
@@ -157,7 +163,7 @@ def partitionImage():
                         islands.pop(testIsland)
             # test down
             if j < parsHigh-1:
-                if currPix == parsPix[i,j+1][0]:
+                if roundToThresh(currPix) == roundToThresh(parsPix[i,j+1][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i,j+1), islands)
                     if currIsland != testIsland:
@@ -204,9 +210,9 @@ def partitionImage():
     print("island partitioning complete!")
     print("there are now: " + str(len(islands)) + " islands")
 
-    for island in islands:
-        if parsPix[island[0][0],island[0][1]][1] == 0:
-            islands.pop(islands.index(island))
+    #for island in islands:
+    #    if parsPix[island[0][0],island[0][1]][1] == 0:
+    #        islands.pop(islands.index(island))
 
     print("transparency removed!")
     print("there are now: " + str(len(islands)) + " islands")
@@ -323,8 +329,15 @@ def partitionImage():
     codeOut.write("end\n")
     codeOut.close()
 
+# rounds off shades into a given number of steps
+def threshImage():
+    global numThresh
+
+    # find the range of each threshhold
+    ranThresh = int(255/numThresh)
+    print("Range of threshholds" + str(ranThresh))
+
 # print ascii image to terminal one island at a time
-# TODO Convert this to use pcode file
 def printImage():
     global imgName
     global delay

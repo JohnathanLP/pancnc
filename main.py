@@ -15,6 +15,7 @@ while not done:
     print "3 Print ASCII image"
     print "4 Partition image into islands"
     print "5 Simulate printing image"
+    print "6 Threshold Image"
     print "8 Fully process image"
     print "9 Quit"
 
@@ -31,7 +32,7 @@ while not done:
     elif menu == "5":
         modules.printImage()
     elif menu == "6":
-        print "\nunimplemented\n"
+        modules.threshImage()
     elif menu == "7":
         print "\nunimplemented\n"
     elif menu == "8":
