@@ -61,6 +61,7 @@ def reportImage():
         print "Image loaded: " + imgName + ".png"
 
 # load, desaturate, and scale image
+# takes in raw image, saves edited .png file and loads pixels into parsPix array
 def parseImage(): 
     global imgName
     global rawImg
@@ -93,6 +94,7 @@ def parseImage():
     parsImg.save("parsed/images/" + imgName + ".png")
 
 # print parsed image to ASCII
+# prints from parsPix array
 def previewImage():
     global parsPix
     global parsHigh
@@ -116,6 +118,7 @@ def previewImage():
 
 
 # partition image into contiguous islands of the same color
+# loads from parsPix array, outputs .pcode file
 def partitionImage():
     global parsImg
     global parsPix
@@ -210,9 +213,9 @@ def partitionImage():
     print("island partitioning complete!")
     print("there are now: " + str(len(islands)) + " islands")
 
-    #for island in islands:
-    #    if parsPix[island[0][0],island[0][1]][1] == 0:
-    #        islands.pop(islands.index(island))
+    for island in islands:
+        if parsPix[island[0][0],island[0][1]][1] == 0:
+            islands.pop(islands.index(island))
 
     print("transparency removed!")
     print("there are now: " + str(len(islands)) + " islands")
