@@ -1,0 +1,2664 @@
+Island: 0
+size: 3
+value: 61
+[(12, 0), (12, 1), (13, 2)]
+
+
+Island: 1
+size: 2
+value: 30
+[(17, 0), (18, 0)]
+
+
+Island: 2
+size: 1
+value: 15
+[(19, 0)]
+
+
+Island: 3
+size: 1
+value: 46
+[(20, 0)]
+
+
+Island: 4
+size: 2
+value: 58
+[(10, 1), (11, 0)]
+
+
+Island: 5
+size: 4
+value: 56
+[(13, 1), (14, 0), (14, 1), (15, 0)]
+
+
+Island: 6
+size: 2
+value: 47
+[(15, 1), (16, 1)]
+
+
+Island: 7
+size: 1
+value: 57
+[(19, 1)]
+
+
+Island: 8
+size: 1
+value: 8
+[(20, 1)]
+
+
+Island: 9
+size: 1
+value: 59
+[(21, 1)]
+
+
+Island: 10
+size: 4
+value: 49
+[(22, 1), (22, 2), (22, 3), (23, 4)]
+
+
+Island: 11
+size: 1
+value: 60
+[(30, 1)]
+
+
+Island: 12
+size: 1
+value: 60
+[(21, 2)]
+
+
+Island: 13
+size: 30
+value: 50
+[(23, 2), (23, 3), (24, 2), (24, 4), (25, 2), (25, 3), (25, 5), (26, 1), (26, 2), (26, 3), (26, 4), (26, 5), (27, 0), (27, 1), (27, 2), (27, 3), (27, 4), (28, 0), (28, 1), (28, 2), (28, 3), (29, 0), (29, 1), (29, 2), (29, 3), (29, 4), (30, 0), (31, 0), (31, 1), (31, 2)]
+
+
+Island: 14
+size: 1
+value: 19
+[(18, 4)]
+
+
+Island: 15
+size: 1
+value: 38
+[(19, 4)]
+
+
+Island: 16
+size: 1
+value: 50
+[(31, 4)]
+
+
+Island: 17
+size: 26
+value: 47
+[(27, 5), (27, 6), (27, 7), (27, 8), (28, 4), (28, 5), (28, 6), (28, 8), (28, 9), (29, 5), (29, 6), (29, 7), (29, 8), (29, 9), (30, 2), (30, 3), (30, 4), (30, 6), (30, 7), (30, 8), (30, 9), (31, 3), (31, 5), (31, 6), (31, 7), (31, 8)]
+
+
+Island: 18
+size: 1
+value: 38
+[(30, 5)]
+
+
+Island: 19
+size: 1
+value: 62
+[(26, 6)]
+
+
+Island: 20
+size: 1
+value: 38
+[(28, 7)]
+
+
+Island: 21
+size: 1
+value: 38
+[(0, 8)]
+
+
+Island: 22
+size: 1
+value: 48
+[(6, 12)]
+
+
+Island: 23
+size: 1
+value: 60
+[(10, 12)]
+
+
+Island: 24
+size: 1
+value: 45
+[(25, 12)]
+
+
+Island: 25
+size: 1
+value: 42
+[(28, 12)]
+
+
+Island: 26
+size: 1
+value: 56
+[(6, 13)]
+
+
+Island: 27
+size: 1
+value: 34
+[(25, 13)]
+
+
+Island: 28
+size: 34
+value: 39
+[(27, 13), (27, 14), (27, 15), (27, 16), (28, 10), (28, 11), (28, 13), (28, 14), (28, 15), (28, 16), (29, 10), (29, 11), (29, 12), (29, 13), (29, 14), (29, 15), (29, 16), (29, 17), (30, 10), (30, 11), (30, 12), (30, 13), (30, 14), (30, 15), (30, 16), (30, 17), (31, 9), (31, 10), (31, 11), (31, 12), (31, 13), (31, 14), (31, 16), (31, 17)]
+
+
+Island: 29
+size: 1
+value: 38
+[(6, 14)]
+
+
+Island: 30
+size: 2
+value: 39
+[(11, 14), (12, 14)]
+
+
+Island: 31
+size: 2
+value: 26
+[(25, 14), (26, 14)]
+
+
+Island: 32
+size: 1
+value: 55
+[(12, 15)]
+
+
+Island: 33
+size: 1
+value: 58
+[(25, 15)]
+
+
+Island: 34
+size: 1
+value: 29
+[(31, 15)]
+
+
+Island: 35
+size: 12
+value: 48
+[(25, 16), (25, 18), (26, 15), (26, 16), (26, 17), (27, 17), (27, 18), (28, 17), (28, 18), (29, 18), (30, 18), (31, 18)]
+
+
+Island: 36
+size: 2
+value: 51
+[(25, 17), (26, 18)]
+
+
+Island: 37
+size: 2
+value: 3
+[(0, 18), (1, 18)]
+
+
+Island: 38
+size: 1
+value: 10
+[(2, 18)]
+
+
+Island: 39
+size: 1
+value: 54
+[(31, 19)]
+
+
+Island: 40
+size: 1
+value: 8
+[(0, 21)]
+
+
+Island: 41
+size: 2
+value: 41
+[(1, 21), (2, 22)]
+
+
+Island: 42
+size: 1
+value: 26
+[(2, 21)]
+
+
+Island: 43
+size: 2
+value: 12
+[(0, 22), (1, 22)]
+
+
+Island: 44
+size: 1
+value: 8
+[(0, 23)]
+
+
+Island: 45
+size: 1
+value: 55
+[(1, 23)]
+
+
+Island: 46
+size: 3
+value: 5
+[(2, 23), (2, 24), (2, 25)]
+
+
+Island: 47
+size: 1
+value: 22
+[(3, 23)]
+
+
+Island: 48
+size: 2
+value: 56
+[(4, 23), (4, 24)]
+
+
+Island: 49
+size: 1
+value: 27
+[(7, 23)]
+
+
+Island: 50
+size: 1
+value: 30
+[(20, 23)]
+
+
+Island: 51
+size: 2
+value: 35
+[(0, 24), (1, 24)]
+
+
+Island: 52
+size: 2
+value: 42
+[(3, 24), (3, 25)]
+
+
+Island: 53
+size: 4
+value: 41
+[(5, 24), (5, 25), (6, 23), (6, 24)]
+
+
+Island: 54
+size: 3
+value: 36
+[(7, 24), (7, 25), (8, 24)]
+
+
+Island: 55
+size: 1
+value: 19
+[(26, 24)]
+
+
+Island: 56
+size: 1
+value: 61
+[(28, 24)]
+
+
+Island: 57
+size: 1
+value: 47
+[(31, 24)]
+
+
+Island: 58
+size: 1
+value: 28
+[(0, 25)]
+
+
+Island: 59
+size: 1
+value: 19
+[(1, 25)]
+
+
+Island: 60
+size: 3
+value: 24
+[(8, 25), (9, 25), (9, 26)]
+
+
+Island: 61
+size: 1
+value: 2
+[(23, 25)]
+
+
+Island: 62
+size: 1
+value: 38
+[(24, 25)]
+
+
+Island: 63
+size: 2
+value: 3
+[(25, 25), (26, 25)]
+
+
+Island: 64
+size: 1
+value: 35
+[(27, 25)]
+
+
+Island: 65
+size: 1
+value: 11
+[(28, 25)]
+
+
+Island: 66
+size: 1
+value: 1
+[(29, 25)]
+
+
+Island: 67
+size: 1
+value: 26
+[(30, 25)]
+
+
+Island: 68
+size: 1
+value: 34
+[(31, 25)]
+
+
+Island: 69
+size: 1
+value: 10
+[(22, 26)]
+
+
+Island: 70
+size: 2
+value: 59
+[(23, 26), (24, 26)]
+
+
+Island: 71
+size: 1
+value: 23
+[(25, 26)]
+
+
+Island: 72
+size: 13
+value: 54
+[(26, 26), (26, 27), (27, 27), (28, 27), (28, 28), (29, 27), (29, 28), (29, 29), (30, 28), (30, 29), (31, 27), (31, 28), (31, 29)]
+
+
+Island: 73
+size: 6
+value: 49
+[(27, 26), (28, 26), (29, 26), (30, 26), (30, 27), (31, 26)]
+
+
+Island: 74
+size: 7
+value: 9
+[(9, 27), (9, 28), (9, 29), (10, 29), (10, 30), (10, 31), (11, 31)]
+
+
+Island: 75
+size: 1
+value: 8
+[(23, 27)]
+
+
+Island: 76
+size: 1
+value: 36
+[(24, 27)]
+
+
+Island: 77
+size: 1
+value: 47
+[(25, 27)]
+
+
+Island: 78
+size: 1
+value: 27
+[(3, 28)]
+
+
+Island: 79
+size: 2
+value: 8
+[(6, 28), (7, 28)]
+
+
+Island: 80
+size: 1
+value: 48
+[(27, 28)]
+
+
+Island: 81
+size: 2
+value: 21
+[(0, 29), (1, 29)]
+
+
+Island: 82
+size: 2
+value: 7
+[(2, 29), (3, 29)]
+
+
+Island: 83
+size: 4
+value: 19
+[(27, 29), (28, 29), (28, 30), (28, 31)]
+
+
+Island: 84
+size: 26
+value: 18
+[(0, 30), (1, 30), (1, 31), (2, 30), (3, 30), (3, 31), (4, 28), (4, 29), (5, 28), (5, 29), (5, 30), (5, 31), (6, 29), (6, 30), (6, 31), (7, 27), (7, 29), (7, 30), (7, 31), (8, 27), (8, 28), (8, 29), (8, 30), (8, 31), (9, 30), (9, 31)]
+
+
+Island: 85
+size: 2
+value: 20
+[(4, 30), (4, 31)]
+
+
+Island: 86
+size: 13
+value: 20
+[(23, 30), (24, 28), (24, 29), (24, 30), (24, 31), (25, 28), (25, 29), (26, 28), (26, 29), (26, 30), (26, 31), (27, 30), (27, 31)]
+
+
+Island: 87
+size: 2
+value: 30
+[(25, 30), (25, 31)]
+
+
+Island: 88
+size: 5
+value: 29
+[(29, 30), (29, 31), (30, 30), (30, 31), (31, 31)]
+
+
+Island: 89
+size: 1
+value: 33
+[(31, 30)]
+
+
+Island: 90
+size: 1
+value: 21
+[(0, 31)]
+
+
+Island: 91
+size: 1
+value: 22
+[(2, 31)]
+
+
+Island: 92
+size: 1
+value: 19
+[(23, 31)]
+
+
+Island: 93
+size: 12
+value: 117
+[(3, 0), (4, 0), (4, 2), (5, 0), (5, 1), (5, 2), (6, 0), (6, 1), (6, 2), (6, 3), (6, 4), (6, 5)]
+
+
+Island: 94
+size: 9
+value: 103
+[(7, 0), (7, 1), (7, 2), (7, 3), (8, 0), (8, 1), (9, 0), (9, 1), (10, 0)]
+
+
+Island: 95
+size: 1
+value: 80
+[(13, 0)]
+
+
+Island: 96
+size: 1
+value: 65
+[(16, 0)]
+
+
+Island: 97
+size: 9
+value: 64
+[(21, 0), (22, 0), (23, 0), (23, 1), (24, 0), (24, 1), (25, 0), (25, 1), (26, 0)]
+
+
+Island: 98
+size: 3
+value: 70
+[(17, 1), (17, 2), (18, 1)]
+
+
+Island: 99
+size: 1
+value: 97
+[(8, 2)]
+
+
+Island: 100
+size: 1
+value: 68
+[(9, 2)]
+
+
+Island: 101
+size: 4
+value: 79
+[(10, 2), (11, 1), (11, 2), (12, 2)]
+
+
+Island: 102
+size: 1
+value: 75
+[(14, 2)]
+
+
+Island: 103
+size: 1
+value: 97
+[(15, 2)]
+
+
+Island: 104
+size: 1
+value: 81
+[(16, 2)]
+
+
+Island: 105
+size: 1
+value: 83
+[(18, 2)]
+
+
+Island: 106
+size: 1
+value: 64
+[(19, 2)]
+
+
+Island: 107
+size: 5
+value: 114
+[(8, 3), (8, 6), (9, 4), (9, 6), (10, 5)]
+
+
+Island: 108
+size: 1
+value: 104
+[(9, 3)]
+
+
+Island: 109
+size: 3
+value: 90
+[(10, 3), (11, 3), (12, 3)]
+
+
+Island: 110
+size: 1
+value: 123
+[(14, 3)]
+
+
+Island: 111
+size: 1
+value: 112
+[(15, 3)]
+
+
+Island: 112
+size: 4
+value: 101
+[(16, 3), (16, 4), (16, 5), (17, 3)]
+
+
+Island: 113
+size: 1
+value: 111
+[(18, 3)]
+
+
+Island: 114
+size: 2
+value: 95
+[(19, 3), (20, 2)]
+
+
+Island: 115
+size: 1
+value: 100
+[(20, 3)]
+
+
+Island: 116
+size: 2
+value: 89
+[(21, 3), (21, 4)]
+
+
+Island: 117
+size: 2
+value: 66
+[(24, 3), (25, 4)]
+
+
+Island: 118
+size: 2
+value: 121
+[(7, 4), (7, 5)]
+
+
+Island: 119
+size: 2
+value: 103
+[(12, 4), (13, 3)]
+
+
+Island: 120
+size: 2
+value: 118
+[(20, 4), (21, 5)]
+
+
+Island: 121
+size: 1
+value: 95
+[(9, 5)]
+
+
+Island: 122
+size: 2
+value: 64
+[(11, 5), (12, 5)]
+
+
+Island: 123
+size: 1
+value: 79
+[(13, 5)]
+
+
+Island: 124
+size: 1
+value: 88
+[(17, 5)]
+
+
+Island: 125
+size: 1
+value: 114
+[(18, 5)]
+
+
+Island: 126
+size: 1
+value: 94
+[(22, 5)]
+
+
+Island: 127
+size: 2
+value: 115
+[(23, 5), (23, 6)]
+
+
+Island: 128
+size: 1
+value: 93
+[(24, 5)]
+
+
+Island: 129
+size: 1
+value: 97
+[(7, 6)]
+
+
+Island: 130
+size: 1
+value: 105
+[(25, 6)]
+
+
+Island: 131
+size: 1
+value: 81
+[(7, 7)]
+
+
+Island: 132
+size: 1
+value: 95
+[(26, 7)]
+
+
+Island: 133
+size: 1
+value: 100
+[(6, 8)]
+
+
+Island: 134
+size: 3
+value: 122
+[(7, 8), (7, 9), (7, 10)]
+
+
+Island: 135
+size: 1
+value: 108
+[(25, 8)]
+
+
+Island: 136
+size: 1
+value: 125
+[(26, 8)]
+
+
+Island: 137
+size: 2
+value: 71
+[(1, 9), (2, 10)]
+
+
+Island: 138
+size: 1
+value: 97
+[(5, 9)]
+
+
+Island: 139
+size: 1
+value: 110
+[(25, 9)]
+
+
+Island: 140
+size: 1
+value: 92
+[(27, 9)]
+
+
+Island: 141
+size: 2
+value: 88
+[(5, 10), (6, 9)]
+
+
+Island: 142
+size: 3
+value: 109
+[(25, 10), (25, 11), (26, 11)]
+
+
+Island: 143
+size: 1
+value: 120
+[(27, 10)]
+
+
+Island: 144
+size: 2
+value: 106
+[(4, 11), (5, 12)]
+
+
+Island: 145
+size: 3
+value: 68
+[(5, 11), (6, 10), (6, 11)]
+
+
+Island: 146
+size: 1
+value: 113
+[(21, 11)]
+
+
+Island: 147
+size: 2
+value: 96
+[(22, 11), (23, 11)]
+
+
+Island: 148
+size: 1
+value: 97
+[(9, 12)]
+
+
+Island: 149
+size: 1
+value: 91
+[(11, 12)]
+
+
+Island: 150
+size: 1
+value: 118
+[(12, 12)]
+
+
+Island: 151
+size: 1
+value: 110
+[(24, 12)]
+
+
+Island: 152
+size: 1
+value: 63
+[(27, 12)]
+
+
+Island: 153
+size: 1
+value: 117
+[(5, 13)]
+
+
+Island: 154
+size: 1
+value: 82
+[(26, 13)]
+
+
+Island: 155
+size: 1
+value: 92
+[(10, 14)]
+
+
+Island: 156
+size: 1
+value: 95
+[(13, 14)]
+
+
+Island: 157
+size: 1
+value: 103
+[(14, 14)]
+
+
+Island: 158
+size: 1
+value: 96
+[(18, 14)]
+
+
+Island: 159
+size: 1
+value: 89
+[(19, 14)]
+
+
+Island: 160
+size: 1
+value: 93
+[(20, 14)]
+
+
+Island: 161
+size: 3
+value: 120
+[(21, 14), (22, 15), (23, 15)]
+
+
+Island: 162
+size: 1
+value: 105
+[(23, 14)]
+
+
+Island: 163
+size: 1
+value: 69
+[(9, 15)]
+
+
+Island: 164
+size: 1
+value: 109
+[(10, 15)]
+
+
+Island: 165
+size: 1
+value: 72
+[(11, 15)]
+
+
+Island: 166
+size: 1
+value: 64
+[(13, 15)]
+
+
+Island: 167
+size: 1
+value: 85
+[(14, 15)]
+
+
+Island: 168
+size: 3
+value: 111
+[(19, 15), (20, 15), (21, 15)]
+
+
+Island: 169
+size: 10
+value: 121
+[(2, 17), (3, 13), (3, 15), (3, 16), (3, 17), (4, 12), (4, 13), (4, 14), (4, 15), (5, 14)]
+
+
+Island: 170
+size: 1
+value: 111
+[(11, 17)]
+
+
+Island: 171
+size: 11
+value: 115
+[(3, 18), (3, 19), (4, 16), (4, 17), (4, 18), (4, 19), (5, 15), (5, 16), (5, 17), (5, 19), (6, 15)]
+
+
+Island: 172
+size: 4
+value: 110
+[(7, 19), (7, 20), (7, 21), (8, 22)]
+
+
+Island: 173
+size: 9
+value: 66
+[(25, 19), (26, 19), (27, 19), (28, 19), (29, 19), (29, 20), (30, 19), (30, 20), (31, 20)]
+
+
+Island: 174
+size: 2
+value: 113
+[(0, 20), (1, 20)]
+
+
+Island: 175
+size: 1
+value: 73
+[(2, 20)]
+
+
+Island: 176
+size: 13
+value: 106
+[(3, 20), (4, 20), (5, 18), (5, 20), (5, 21), (6, 16), (6, 17), (6, 18), (6, 19), (6, 20), (6, 21), (7, 22), (8, 23)]
+
+
+Island: 177
+size: 21
+value: 73
+[(25, 20), (25, 21), (25, 22), (26, 20), (26, 21), (26, 22), (27, 20), (27, 21), (27, 22), (28, 20), (28, 21), (28, 22), (28, 23), (29, 21), (29, 22), (29, 23), (29, 24), (30, 21), (30, 22), (30, 24), (31, 21)]
+
+
+Island: 178
+size: 2
+value: 87
+[(3, 21), (4, 22)]
+
+
+Island: 179
+size: 3
+value: 97
+[(4, 21), (5, 22), (6, 22)]
+
+
+Island: 180
+size: 1
+value: 123
+[(8, 21)]
+
+
+Island: 181
+size: 1
+value: 71
+[(14, 21)]
+
+
+Island: 182
+size: 1
+value: 107
+[(18, 21)]
+
+
+Island: 183
+size: 1
+value: 120
+[(24, 21)]
+
+
+Island: 184
+size: 1
+value: 75
+[(3, 22)]
+
+
+Island: 185
+size: 1
+value: 110
+[(10, 22)]
+
+
+Island: 186
+size: 1
+value: 121
+[(11, 22)]
+
+
+Island: 187
+size: 1
+value: 67
+[(15, 22)]
+
+
+Island: 188
+size: 6
+value: 86
+[(24, 22), (24, 23), (25, 23), (26, 23), (27, 23), (27, 24)]
+
+
+Island: 189
+size: 2
+value: 84
+[(31, 22), (31, 23)]
+
+
+Island: 190
+size: 1
+value: 68
+[(5, 23)]
+
+
+Island: 191
+size: 1
+value: 85
+[(11, 23)]
+
+
+Island: 192
+size: 1
+value: 92
+[(12, 23)]
+
+
+Island: 193
+size: 1
+value: 108
+[(14, 23)]
+
+
+Island: 194
+size: 2
+value: 91
+[(15, 23), (16, 22)]
+
+
+Island: 195
+size: 1
+value: 113
+[(16, 23)]
+
+
+Island: 196
+size: 1
+value: 69
+[(30, 23)]
+
+
+Island: 197
+size: 2
+value: 118
+[(9, 24), (10, 25)]
+
+
+Island: 198
+size: 1
+value: 92
+[(23, 24)]
+
+
+Island: 199
+size: 1
+value: 75
+[(24, 24)]
+
+
+Island: 200
+size: 1
+value: 65
+[(25, 24)]
+
+
+Island: 201
+size: 7
+value: 80
+[(4, 25), (5, 26), (6, 25), (6, 26), (6, 27), (7, 26), (8, 26)]
+
+
+Island: 202
+size: 7
+value: 106
+[(0, 26), (0, 27), (0, 28), (1, 26), (1, 27), (1, 28), (2, 27)]
+
+
+Island: 203
+size: 7
+value: 98
+[(2, 26), (2, 28), (3, 26), (3, 27), (4, 26), (4, 27), (5, 27)]
+
+
+Island: 204
+size: 3
+value: 106
+[(10, 26), (10, 27), (11, 27)]
+
+
+Island: 205
+size: 1
+value: 125
+[(11, 26)]
+
+
+Island: 206
+size: 1
+value: 124
+[(15, 26)]
+
+
+Island: 207
+size: 1
+value: 79
+[(10, 28)]
+
+
+Island: 208
+size: 4
+value: 99
+[(11, 28), (12, 29), (13, 30), (13, 31)]
+
+
+Island: 209
+size: 1
+value: 122
+[(12, 28)]
+
+
+Island: 210
+size: 2
+value: 124
+[(20, 28), (21, 28)]
+
+
+Island: 211
+size: 3
+value: 109
+[(11, 29), (12, 30), (12, 31)]
+
+
+Island: 212
+size: 5
+value: 89
+[(13, 29), (14, 30), (14, 31), (15, 31), (16, 31)]
+
+
+Island: 213
+size: 1
+value: 99
+[(19, 29)]
+
+
+Island: 214
+size: 1
+value: 80
+[(11, 30)]
+
+
+Island: 215
+size: 3
+value: 63
+[(15, 30), (16, 30), (17, 30)]
+
+
+Island: 216
+size: 1
+value: 115
+[(18, 30)]
+
+
+Island: 217
+size: 1
+value: 94
+[(17, 31)]
+
+
+Island: 218
+size: 6
+value: 136
+[(0, 0), (0, 1), (0, 2), (0, 3), (1, 1), (1, 2)]
+
+
+Island: 219
+size: 23
+value: 129
+[(1, 0), (1, 3), (1, 4), (2, 0), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3), (3, 4), (3, 5), (3, 7), (4, 1), (4, 3), (4, 4), (4, 5), (4, 7), (5, 3), (5, 4), (5, 5), (5, 6), (5, 7)]
+
+
+Island: 220
+size: 1
+value: 142
+[(0, 4)]
+
+
+Island: 221
+size: 1
+value: 167
+[(8, 4)]
+
+
+Island: 222
+size: 2
+value: 137
+[(10, 4), (11, 4)]
+
+
+Island: 223
+size: 1
+value: 163
+[(13, 4)]
+
+
+Island: 224
+size: 1
+value: 144
+[(14, 4)]
+
+
+Island: 225
+size: 1
+value: 131
+[(17, 4)]
+
+
+Island: 226
+size: 1
+value: 132
+[(22, 4)]
+
+
+Island: 227
+size: 7
+value: 138
+[(0, 5), (1, 5), (2, 4), (2, 5), (2, 6), (3, 6), (4, 6)]
+
+
+Island: 228
+size: 1
+value: 132
+[(8, 5)]
+
+
+Island: 229
+size: 2
+value: 134
+[(14, 5), (15, 4)]
+
+
+Island: 230
+size: 1
+value: 160
+[(15, 5)]
+
+
+Island: 231
+size: 1
+value: 148
+[(19, 5)]
+
+
+Island: 232
+size: 1
+value: 135
+[(20, 5)]
+
+
+Island: 233
+size: 10
+value: 144
+[(0, 6), (1, 6), (1, 7), (1, 8), (2, 7), (2, 8), (2, 9), (3, 9), (3, 10), (4, 10)]
+
+
+Island: 234
+size: 3
+value: 126
+[(10, 6), (11, 6), (12, 6)]
+
+
+Island: 235
+size: 3
+value: 159
+[(13, 6), (14, 7), (15, 6)]
+
+
+Island: 236
+size: 2
+value: 127
+[(24, 6), (24, 7)]
+
+
+Island: 237
+size: 1
+value: 154
+[(0, 7)]
+
+
+Island: 238
+size: 1
+value: 130
+[(8, 7)]
+
+
+Island: 239
+size: 1
+value: 142
+[(9, 7)]
+
+
+Island: 240
+size: 1
+value: 184
+[(11, 7)]
+
+
+Island: 241
+size: 3
+value: 171
+[(13, 7), (13, 8), (14, 6)]
+
+
+Island: 242
+size: 1
+value: 187
+[(15, 7)]
+
+
+Island: 243
+size: 1
+value: 145
+[(25, 7)]
+
+
+Island: 244
+size: 6
+value: 137
+[(3, 8), (4, 8), (4, 9), (5, 8), (6, 6), (6, 7)]
+
+
+Island: 245
+size: 1
+value: 159
+[(8, 8)]
+
+
+Island: 246
+size: 2
+value: 174
+[(9, 8), (10, 7)]
+
+
+Island: 247
+size: 2
+value: 163
+[(10, 8), (10, 9)]
+
+
+Island: 248
+size: 1
+value: 165
+[(24, 8)]
+
+
+Island: 249
+size: 5
+value: 161
+[(0, 9), (0, 10), (0, 11), (1, 10), (1, 11)]
+
+
+Island: 250
+size: 2
+value: 167
+[(8, 9), (8, 10)]
+
+
+Island: 251
+size: 1
+value: 180
+[(26, 9)]
+
+
+Island: 252
+size: 1
+value: 144
+[(26, 10)]
+
+
+Island: 253
+size: 2
+value: 155
+[(2, 11), (3, 11)]
+
+
+Island: 254
+size: 1
+value: 143
+[(7, 11)]
+
+
+Island: 255
+size: 1
+value: 170
+[(8, 11)]
+
+
+Island: 256
+size: 1
+value: 184
+[(9, 11)]
+
+
+Island: 257
+size: 1
+value: 159
+[(11, 11)]
+
+
+Island: 258
+size: 1
+value: 128
+[(12, 11)]
+
+
+Island: 259
+size: 1
+value: 142
+[(20, 11)]
+
+
+Island: 260
+size: 1
+value: 176
+[(24, 11)]
+
+
+Island: 261
+size: 1
+value: 155
+[(27, 11)]
+
+
+Island: 262
+size: 8
+value: 147
+[(0, 12), (0, 13), (0, 14), (0, 15), (1, 12), (1, 13), (1, 14), (1, 15)]
+
+
+Island: 263
+size: 2
+value: 151
+[(7, 12), (8, 12)]
+
+
+Island: 264
+size: 1
+value: 174
+[(13, 12)]
+
+
+Island: 265
+size: 1
+value: 185
+[(20, 12)]
+
+
+Island: 266
+size: 1
+value: 127
+[(26, 12)]
+
+
+Island: 267
+size: 5
+value: 147
+[(7, 13), (7, 14), (7, 15), (7, 16), (7, 17)]
+
+
+Island: 268
+size: 3
+value: 130
+[(8, 13), (8, 14), (9, 14)]
+
+
+Island: 269
+size: 1
+value: 168
+[(9, 13)]
+
+
+Island: 270
+size: 2
+value: 174
+[(10, 13), (11, 13)]
+
+
+Island: 271
+size: 2
+value: 143
+[(12, 13), (13, 13)]
+
+
+Island: 272
+size: 1
+value: 180
+[(14, 13)]
+
+
+Island: 273
+size: 1
+value: 176
+[(18, 13)]
+
+
+Island: 274
+size: 2
+value: 142
+[(19, 13), (20, 13)]
+
+
+Island: 275
+size: 1
+value: 178
+[(21, 13)]
+
+
+Island: 276
+size: 1
+value: 180
+[(22, 13)]
+
+
+Island: 277
+size: 1
+value: 174
+[(24, 13)]
+
+
+Island: 278
+size: 2
+value: 137
+[(15, 14), (15, 15)]
+
+
+Island: 279
+size: 1
+value: 176
+[(16, 14)]
+
+
+Island: 280
+size: 2
+value: 142
+[(17, 14), (18, 15)]
+
+
+Island: 281
+size: 1
+value: 163
+[(22, 14)]
+
+
+Island: 282
+size: 1
+value: 157
+[(24, 14)]
+
+
+Island: 283
+size: 1
+value: 128
+[(8, 15)]
+
+
+Island: 284
+size: 1
+value: 162
+[(17, 15)]
+
+
+Island: 285
+size: 11
+value: 135
+[(0, 16), (0, 17), (1, 16), (1, 17), (2, 12), (2, 13), (2, 14), (2, 15), (2, 16), (3, 12), (3, 14)]
+
+
+Island: 286
+size: 1
+value: 179
+[(8, 16)]
+
+
+Island: 287
+size: 2
+value: 181
+[(9, 16), (10, 16)]
+
+
+Island: 288
+size: 1
+value: 147
+[(11, 16)]
+
+
+Island: 289
+size: 1
+value: 183
+[(12, 16)]
+
+
+Island: 290
+size: 1
+value: 141
+[(13, 16)]
+
+
+Island: 291
+size: 1
+value: 160
+[(14, 16)]
+
+
+Island: 292
+size: 1
+value: 137
+[(19, 16)]
+
+
+Island: 293
+size: 1
+value: 149
+[(20, 16)]
+
+
+Island: 294
+size: 1
+value: 169
+[(21, 16)]
+
+
+Island: 295
+size: 1
+value: 139
+[(10, 17)]
+
+
+Island: 296
+size: 1
+value: 135
+[(7, 18)]
+
+
+Island: 297
+size: 2
+value: 182
+[(8, 18), (8, 19)]
+
+
+Island: 298
+size: 1
+value: 146
+[(0, 19)]
+
+
+Island: 299
+size: 2
+value: 133
+[(1, 19), (2, 19)]
+
+
+Island: 300
+size: 1
+value: 169
+[(14, 19)]
+
+
+Island: 301
+size: 1
+value: 159
+[(8, 20)]
+
+
+Island: 302
+size: 2
+value: 176
+[(9, 20), (10, 20)]
+
+
+Island: 303
+size: 3
+value: 184
+[(12, 20), (13, 19), (14, 18)]
+
+
+Island: 304
+size: 1
+value: 159
+[(13, 20)]
+
+
+Island: 305
+size: 1
+value: 154
+[(24, 20)]
+
+
+Island: 306
+size: 4
+value: 130
+[(9, 21), (9, 22), (9, 23), (10, 21)]
+
+
+Island: 307
+size: 2
+value: 149
+[(11, 21), (12, 22)]
+
+
+Island: 308
+size: 2
+value: 166
+[(12, 21), (13, 21)]
+
+
+Island: 309
+size: 1
+value: 171
+[(15, 21)]
+
+
+Island: 310
+size: 1
+value: 150
+[(17, 21)]
+
+
+Island: 311
+size: 2
+value: 161
+[(21, 21), (22, 22)]
+
+
+Island: 312
+size: 3
+value: 143
+[(23, 21), (23, 22), (23, 23)]
+
+
+Island: 313
+size: 2
+value: 130
+[(13, 22), (14, 22)]
+
+
+Island: 314
+size: 1
+value: 126
+[(17, 22)]
+
+
+Island: 315
+size: 1
+value: 177
+[(18, 22)]
+
+
+Island: 316
+size: 2
+value: 182
+[(19, 22), (20, 21)]
+
+
+Island: 317
+size: 3
+value: 153
+[(20, 22), (21, 22), (22, 21)]
+
+
+Island: 318
+size: 1
+value: 176
+[(10, 23)]
+
+
+Island: 319
+size: 1
+value: 126
+[(13, 23)]
+
+
+Island: 320
+size: 1
+value: 148
+[(17, 23)]
+
+
+Island: 321
+size: 1
+value: 167
+[(18, 23)]
+
+
+Island: 322
+size: 1
+value: 146
+[(19, 23)]
+
+
+Island: 323
+size: 1
+value: 140
+[(21, 23)]
+
+
+Island: 324
+size: 1
+value: 180
+[(22, 23)]
+
+
+Island: 325
+size: 1
+value: 150
+[(10, 24)]
+
+
+Island: 326
+size: 1
+value: 167
+[(11, 24)]
+
+
+Island: 327
+size: 3
+value: 175
+[(13, 24), (14, 24), (15, 24)]
+
+
+Island: 328
+size: 1
+value: 172
+[(21, 24)]
+
+
+Island: 329
+size: 1
+value: 128
+[(22, 24)]
+
+
+Island: 330
+size: 2
+value: 149
+[(11, 25), (12, 24)]
+
+
+Island: 331
+size: 2
+value: 150
+[(12, 25), (13, 26)]
+
+
+Island: 332
+size: 1
+value: 130
+[(13, 25)]
+
+
+Island: 333
+size: 4
+value: 149
+[(14, 25), (14, 26), (15, 25), (16, 26)]
+
+
+Island: 334
+size: 1
+value: 156
+[(16, 25)]
+
+
+Island: 335
+size: 6
+value: 174
+[(17, 25), (17, 26), (18, 25), (18, 26), (19, 25), (20, 26)]
+
+
+Island: 336
+size: 1
+value: 152
+[(21, 25)]
+
+
+Island: 337
+size: 3
+value: 164
+[(12, 26), (13, 27), (13, 28)]
+
+
+Island: 338
+size: 3
+value: 134
+[(21, 26), (21, 27), (22, 25)]
+
+
+Island: 339
+size: 1
+value: 147
+[(12, 27)]
+
+
+Island: 340
+size: 3
+value: 175
+[(14, 27), (15, 28), (16, 28)]
+
+
+Island: 341
+size: 1
+value: 169
+[(20, 27)]
+
+
+Island: 342
+size: 2
+value: 153
+[(22, 27), (23, 28)]
+
+
+Island: 343
+size: 1
+value: 137
+[(14, 28)]
+
+
+Island: 344
+size: 1
+value: 171
+[(19, 28)]
+
+
+Island: 345
+size: 2
+value: 128
+[(14, 29), (15, 29)]
+
+
+Island: 346
+size: 2
+value: 146
+[(16, 29), (17, 29)]
+
+
+Island: 347
+size: 1
+value: 155
+[(18, 29)]
+
+
+Island: 348
+size: 1
+value: 165
+[(21, 29)]
+
+
+Island: 349
+size: 1
+value: 127
+[(23, 29)]
+
+
+Island: 350
+size: 2
+value: 141
+[(19, 30), (20, 29)]
+
+
+Island: 351
+size: 1
+value: 184
+[(21, 30)]
+
+
+Island: 352
+size: 1
+value: 136
+[(18, 31)]
+
+
+Island: 353
+size: 3
+value: 155
+[(19, 31), (20, 30), (20, 31)]
+
+
+Island: 354
+size: 1
+value: 165
+[(22, 31)]
+
+
+Island: 355
+size: 1
+value: 191
+[(16, 6)]
+
+
+Island: 356
+size: 3
+value: 223
+[(17, 6), (18, 6), (19, 6)]
+
+
+Island: 357
+size: 2
+value: 224
+[(22, 6), (22, 7)]
+
+
+Island: 358
+size: 2
+value: 234
+[(17, 7), (18, 7)]
+
+
+Island: 359
+size: 2
+value: 200
+[(19, 7), (20, 7)]
+
+
+Island: 360
+size: 1
+value: 199
+[(23, 7)]
+
+
+Island: 361
+size: 2
+value: 224
+[(11, 8), (12, 7)]
+
+
+Island: 362
+size: 1
+value: 194
+[(14, 8)]
+
+
+Island: 363
+size: 5
+value: 216
+[(15, 8), (16, 7), (16, 9), (16, 10), (17, 9)]
+
+
+Island: 364
+size: 1
+value: 227
+[(16, 8)]
+
+
+Island: 365
+size: 1
+value: 243
+[(17, 8)]
+
+
+Island: 366
+size: 2
+value: 252
+[(18, 8), (19, 8)]
+
+
+Island: 367
+size: 4
+value: 239
+[(22, 8), (22, 9), (22, 10), (23, 9)]
+
+
+Island: 368
+size: 2
+value: 204
+[(23, 8), (24, 9)]
+
+
+Island: 369
+size: 1
+value: 188
+[(9, 9)]
+
+
+Island: 370
+size: 4
+value: 211
+[(11, 9), (12, 8), (12, 9), (13, 9)]
+
+
+Island: 371
+size: 10
+value: 223
+[(14, 9), (14, 12), (15, 10), (15, 11), (16, 11), (17, 10), (17, 11), (17, 12), (18, 10), (18, 12)]
+
+
+Island: 372
+size: 1
+value: 201
+[(15, 9)]
+
+
+Island: 373
+size: 1
+value: 201
+[(18, 9)]
+
+
+Island: 374
+size: 10
+value: 248
+[(19, 9), (20, 6), (20, 8), (20, 9), (20, 10), (21, 6), (21, 7), (21, 8), (21, 9), (21, 10)]
+
+
+Island: 375
+size: 2
+value: 195
+[(9, 10), (10, 11)]
+
+
+Island: 376
+size: 1
+value: 222
+[(10, 10)]
+
+
+Island: 377
+size: 1
+value: 238
+[(11, 10)]
+
+
+Island: 378
+size: 2
+value: 249
+[(12, 10), (13, 10)]
+
+
+Island: 379
+size: 2
+value: 239
+[(14, 10), (14, 11)]
+
+
+Island: 380
+size: 1
+value: 250
+[(19, 10)]
+
+
+Island: 381
+size: 1
+value: 213
+[(23, 10)]
+
+
+Island: 382
+size: 1
+value: 198
+[(24, 10)]
+
+
+Island: 383
+size: 1
+value: 206
+[(13, 11)]
+
+
+Island: 384
+size: 1
+value: 241
+[(18, 11)]
+
+
+Island: 385
+size: 1
+value: 237
+[(19, 11)]
+
+
+Island: 386
+size: 1
+value: 209
+[(15, 12)]
+
+
+Island: 387
+size: 1
+value: 213
+[(16, 12)]
+
+
+Island: 388
+size: 1
+value: 215
+[(19, 12)]
+
+
+Island: 389
+size: 1
+value: 215
+[(21, 12)]
+
+
+Island: 390
+size: 1
+value: 232
+[(22, 12)]
+
+
+Island: 391
+size: 1
+value: 198
+[(23, 12)]
+
+
+Island: 392
+size: 2
+value: 195
+[(15, 13), (16, 13)]
+
+
+Island: 393
+size: 1
+value: 189
+[(17, 13)]
+
+
+Island: 394
+size: 1
+value: 213
+[(23, 13)]
+
+
+Island: 395
+size: 1
+value: 234
+[(16, 15)]
+
+
+Island: 396
+size: 1
+value: 190
+[(24, 15)]
+
+
+Island: 397
+size: 1
+value: 250
+[(16, 16)]
+
+
+Island: 398
+size: 1
+value: 209
+[(18, 16)]
+
+
+Island: 399
+size: 2
+value: 205
+[(23, 16), (24, 17)]
+
+
+Island: 400
+size: 1
+value: 195
+[(8, 17)]
+
+
+Island: 401
+size: 1
+value: 213
+[(9, 17)]
+
+
+Island: 402
+size: 5
+value: 198
+[(12, 17), (13, 18), (14, 17), (15, 16), (15, 18)]
+
+
+Island: 403
+size: 1
+value: 211
+[(13, 17)]
+
+
+Island: 404
+size: 1
+value: 203
+[(15, 17)]
+
+
+Island: 405
+size: 1
+value: 248
+[(16, 17)]
+
+
+Island: 406
+size: 3
+value: 232
+[(19, 17), (20, 18), (21, 18)]
+
+
+Island: 407
+size: 1
+value: 201
+[(20, 17)]
+
+
+Island: 408
+size: 2
+value: 196
+[(21, 17), (22, 16)]
+
+
+Island: 409
+size: 3
+value: 220
+[(22, 17), (22, 18), (22, 19)]
+
+
+Island: 410
+size: 1
+value: 209
+[(9, 18)]
+
+
+Island: 411
+size: 4
+value: 221
+[(10, 18), (11, 18), (11, 19), (12, 18)]
+
+
+Island: 412
+size: 3
+value: 229
+[(16, 18), (17, 16), (17, 17)]
+
+
+Island: 413
+size: 5
+value: 216
+[(17, 18), (18, 17), (18, 18), (19, 19), (19, 20)]
+
+
+Island: 414
+size: 2
+value: 225
+[(19, 18), (20, 19)]
+
+
+Island: 415
+size: 1
+value: 198
+[(9, 19)]
+
+
+Island: 416
+size: 1
+value: 212
+[(10, 19)]
+
+
+Island: 417
+size: 1
+value: 217
+[(12, 19)]
+
+
+Island: 418
+size: 2
+value: 205
+[(15, 19), (15, 20)]
+
+
+Island: 419
+size: 1
+value: 234
+[(16, 19)]
+
+
+Island: 420
+size: 1
+value: 206
+[(17, 19)]
+
+
+Island: 421
+size: 7
+value: 217
+[(21, 19), (22, 20), (23, 17), (23, 18), (23, 19), (24, 16), (24, 18)]
+
+
+Island: 422
+size: 1
+value: 193
+[(24, 19)]
+
+
+Island: 423
+size: 1
+value: 203
+[(11, 20)]
+
+
+Island: 424
+size: 1
+value: 192
+[(14, 20)]
+
+
+Island: 425
+size: 1
+value: 242
+[(16, 20)]
+
+
+Island: 426
+size: 1
+value: 220
+[(18, 20)]
+
+
+Island: 427
+size: 1
+value: 191
+[(20, 20)]
+
+
+Island: 428
+size: 1
+value: 207
+[(21, 20)]
+
+
+Island: 429
+size: 1
+value: 189
+[(23, 20)]
+
+
+Island: 430
+size: 3
+value: 193
+[(16, 21), (17, 20), (18, 19)]
+
+
+Island: 431
+size: 1
+value: 204
+[(19, 21)]
+
+
+Island: 432
+size: 1
+value: 197
+[(16, 24)]
+
+
+Island: 433
+size: 1
+value: 208
+[(17, 24)]
+
+
+Island: 434
+size: 2
+value: 193
+[(18, 24), (19, 24)]
+
+
+Island: 435
+size: 1
+value: 202
+[(20, 24)]
+
+
+Island: 436
+size: 1
+value: 212
+[(20, 25)]
+
+
+Island: 437
+size: 1
+value: 192
+[(19, 26)]
+
+
+Island: 438
+size: 1
+value: 191
+[(15, 27)]
+
+
+Island: 439
+size: 2
+value: 208
+[(16, 27), (17, 27)]
+
+
+Island: 440
+size: 4
+value: 188
+[(17, 28), (18, 27), (18, 28), (19, 27)]
+
+
+Island: 441
+size: 1
+value: 204
+[(22, 28)]
+
+
+Island: 442
+size: 1
+value: 196
+[(22, 29)]
+
+
+Island: 443
+size: 2
+value: 203
+[(21, 31), (22, 30)]
+
+

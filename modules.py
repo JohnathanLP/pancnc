@@ -5,11 +5,11 @@ import time
 #threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
 #threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
 
-#threshold = [0,   31,  62,  93,  125, 156, 187, 218, 255]
-#threschar = ['@', '%', '#', '+', '=', '-', ':', '^', '.']
+threshold = [0,   31,  62,  93,  125, 156, 187, 218, 255]
+threschar = ['@', '%', '#', '+', '=', '-', ':', '^', '.']
 
-threshold = [0,   62,  125, 187, 255]
-threschar = ['@', '#', '=', ':', '.']
+#threshold = [0,   62,  125, 187, 255]
+#threschar = ['@', '#', '=', ':', '.']
 
 # Variables to store information about the currently loaded image file
 imgName  = ""
@@ -25,8 +25,9 @@ parsHigh = 32
 parsWide = 32
 
 numThresh = 10
+rangeSize = 32
 
-delay = .01
+delay = .001
 
 # loads an image
 def loadImage():
@@ -83,7 +84,7 @@ def parseImage():
     parsPix = parsImg.load()
     for j in range(0,parsHigh):
         for i in range(0,parsWide):
-            if parsPix[i,j][1] == 0:
+            if parsPix[i,j][1] != 255:
                 parsPix[i,j] = (255,0)
             else:
                 parsPix[i,j] = (parsPix[i,j][0], 255)
@@ -124,6 +125,7 @@ def partitionImage():
     global parsPix
     global parsWide
     global parsHigh
+    global rangeSize
 
     islands = []
     
@@ -135,14 +137,15 @@ def partitionImage():
     print("island partitioning is about to begin!")
     print("there are now: " + str(len(islands)) + " islands")
 
-    # iterate through entire image, check neighbors for same color
+    # iterate through entire image, check neighbors for same color (within same range)
     # if neighbor is same color, check if same island
     for j in range(0, parsHigh):
         for i in range(0,parsWide):
             currPix = parsPix[i,j][0]
             # test right
             if i < parsWide-1:
-                if roundToThresh(currPix) == roundToThresh(parsPix[i+1,j][0]):
+                if int(currPix/rangeSize) == int(parsPix[i+1,j][0]/rangeSize):
+#                if roundToThresh(currPix) == roundToThresh(parsPix[i+1,j][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i+1,j), islands)
                     if currIsland != testIsland:
@@ -150,7 +153,8 @@ def partitionImage():
                         islands.pop(testIsland)
             # test up
             if j > 0:
-                if roundToThresh(currPix) == roundToThresh(parsPix[i,j-1][0]):
+                if int(currPix/rangeSize) == int(parsPix[i,j-1][0]/rangeSize):
+#                if roundToThresh(currPix) == roundToThresh(parsPix[i,j-1][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i,j-1), islands)
                     if currIsland != testIsland:
@@ -158,7 +162,8 @@ def partitionImage():
                         islands.pop(testIsland)
             # test left
             if i > 0:
-                if roundToThresh(currPix) == roundToThresh(parsPix[i-1,j][0]):
+                if int(currPix/rangeSize) == int(parsPix[i-1,j][0]/rangeSize):
+#                if roundToThresh(currPix) == roundToThresh(parsPix[i-1,j][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i-1,j), islands)
                     if currIsland != testIsland:
@@ -166,7 +171,8 @@ def partitionImage():
                         islands.pop(testIsland)
             # test down
             if j < parsHigh-1:
-                if roundToThresh(currPix) == roundToThresh(parsPix[i,j+1][0]):
+                if int(currPix/rangeSize) == int(parsPix[i,j+1][0]/rangeSize):
+#                if roundToThresh(currPix) == roundToThresh(parsPix[i,j+1][0]):
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i,j+1), islands)
                     if currIsland != testIsland:
@@ -175,7 +181,8 @@ def partitionImage():
 
             # test up, right
             if j > 0 and i < parsWide-1:
-                if currPix == parsPix[i+1,j-1][0]:
+                if int(currPix/rangeSize) == int(parsPix[i+1,j-1][0]/rangeSize):
+#                if currPix == parsPix[i+1,j-1][0]:
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i+1,j-1), islands)
                     if currIsland != testIsland:
@@ -184,7 +191,8 @@ def partitionImage():
             
             # test up, left
             if j > 0 and i > 0:
-                if currPix == parsPix[i-1,j-1][0]:
+                if int(currPix/rangeSize) == int(parsPix[i-1,j-1][0]/rangeSize):
+#                if currPix == parsPix[i-1,j-1][0]:
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i-1,j-1), islands)
                     if currIsland != testIsland:
@@ -193,7 +201,8 @@ def partitionImage():
             
             # test down, left
             if j < parsHigh-1 and i > 0:
-                if currPix == parsPix[i-1,j+1][0]:
+                if int(currPix/rangeSize) == int(parsPix[i-1,j+1][0]/rangeSize):
+#                if currPix == parsPix[i-1,j+1][0]:
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i-1,j+1), islands)
                     if currIsland != testIsland:
@@ -202,7 +211,8 @@ def partitionImage():
             
             # test down, right
             if j < parsHigh-1 and i < parsWide-1:
-                if currPix == parsPix[i+1,j+1][0]:
+                if int(currPix/rangeSize) == int(parsPix[i+1,j+1][0]/rangeSize):
+#                if currPix == parsPix[i+1,j+1][0]:
                     currIsland = searchIslands((i,j), islands)
                     testIsland = searchIslands((i+1,j+1), islands)
                     if currIsland != testIsland:
@@ -214,7 +224,7 @@ def partitionImage():
     print("there are now: " + str(len(islands)) + " islands")
 
     for island in islands:
-        if parsPix[island[0][0],island[0][1]][1] == 0:
+        if parsPix[island[0][0],island[0][1]][1] != 255:
             islands.pop(islands.index(island))
 
     print("transparency removed!")
@@ -259,8 +269,8 @@ def partitionImage():
         sorted = True
         iter = 0
         while iter < len(islands)-1:
-            first  = roundToThresh(parsPix[islands[iter][0][0], islands[iter][0][1]][0])
-            second = roundToThresh(parsPix[islands[iter+1][0][0], islands[iter+1][0][1]][0])
+            first  = (parsPix[islands[iter][0][0], islands[iter][0][1]][0])/rangeSize
+            second = (parsPix[islands[iter+1][0][0], islands[iter+1][0][1]][0])/rangeSize
             if first > second:
                 temp = islands[iter]
                 islands[iter] = islands[iter+1]
@@ -268,8 +278,7 @@ def partitionImage():
                 sorted = False
             iter += 1
 
-
-    # TODO remove this
+    # TODO remove this, depreciated
     # create file with user-friendly report on each island
     reportOut = open("parsed/islands/" + imgName + ".txt", "w+")
     
@@ -281,7 +290,7 @@ def partitionImage():
 
     reportOut.close()
 
-    # TODO remove this
+    # TODO remove this, depreciated
     # create file with simulator-friendly instructions to print image
     instrOut = open("parsed/simulator/" + imgName + ".txt", "w+")
     
@@ -325,9 +334,9 @@ def partitionImage():
         # May require rewrite of partitioning, which honestly should
         # be done anyway, it looks like it was written by an entire
         # troop of monkeys.
-        if roundToThresh(parsPix[island[0][0], island[0][1]][0]) != lastShade:
+        if (parsPix[island[0][0], island[0][1]][0])/rangeSize != lastShade:
             codeOut.write("D 10\n")
-        lastShade = roundToThresh(parsPix[island[0][0], island[0][1]][0])
+        lastShade = (parsPix[island[0][0], island[0][1]][0])/rangeSize
 
     codeOut.write("end\n")
     codeOut.close()
@@ -411,7 +420,12 @@ def printImage():
         for j in range(0,high):
             temp = ""
             for i in range(0,wide):
-                temp += str(printer[i][j]).ljust(2)
+                #temp += str(printer[i][j]).ljust(2)
+                if printer[i][j] != " ":
+                    temp += threschar[printer[i][j]].ljust(2)
+                else:
+                    temp += "  "
+
             output += (temp + "\n")
         
         print output
