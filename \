@@ -1,5 +1,4 @@
 import modules
-import motors
 import sys
 
 if len(sys.argv) > 1:
@@ -43,7 +42,7 @@ if len(sys.argv) > 1:
                 if choice == 'y':
                     motors.initGPIO()
                     motors.loadFile()
-                    motors.printPancake()
+                    motors.print()
                     motors.stopGPIO()
             elif menu == "8":
                 modules.loadImage()

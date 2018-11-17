@@ -35,16 +35,16 @@ class ExampleApp(tk.Frame):
         self.greeting.pack(fill=tk.X, side=tk.TOP)
         self.recipient.pack(fill=tk.X, side=tk.TOP)
                                         
-        def print_out(self):
-            ''' Print a greeting constructed
-            from the selections made by
-            the user. '''
-            print('%s, %s!' % (self.greeting_var.get().title(),
-            self.recipient_var.get()))
-        
-        def run(self):
-            ''' Run the app '''
-            self.mainloop()
+    def print_out(self):
+        ''' Print a greeting constructed
+        from the selections made by
+        the user. '''
+        print('%s, %s!' % (self.greeting_var.get().title(),
+        self.recipient_var.get()))
+    
+    def run(self):
+        ''' Run the app '''
+        self.mainloop()
             
 app = ExampleApp(tk.Tk())
 app.run()
