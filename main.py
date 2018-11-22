@@ -1,5 +1,6 @@
 import modules
-import motors
+#import motors
+import gui
 import sys
 
 if len(sys.argv) > 1:
@@ -59,4 +60,4 @@ if len(sys.argv) > 1:
 
             print "\n\n- - - - - -\n\n"
 else: 
-    print "GUI is not yet implemented (run with -nogui for CLI)"
+    gui.launch()

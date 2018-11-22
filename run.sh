@@ -1,4 +1,4 @@
 #!/bin/bash
 
-python main.py -nogui
+python main.py
 
