@@ -24,7 +24,7 @@ def launch():
 
     #Image
     window.img = ImageTk.PhotoImage(Image.open(window.filename).resize((700,700)))
-    window.panel = tk.Label(window, image = window.img, height = 700, width = 700, background = "red")
+    window.panel = tk.Label(window, image = window.img, height = 700, width = 700, background = "blue")
     window.panel.grid(column = 0, row = 0, rowspan = 12)
 
     def say_hello():
