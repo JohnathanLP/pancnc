@@ -85,7 +85,7 @@ def parseImage():
     for j in range(0,parsHigh):
         for i in range(0,parsWide):
             if parsPix[i,j][1] != 255:
-                parsPix[i,j] = (255,0)
+                parsPix[i,j] = (0,0)
             else:
                 parsPix[i,j] = (parsPix[i,j][0], 255)
 
