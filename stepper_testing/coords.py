@@ -23,6 +23,9 @@ x_ms3 = 13
 y_stp = 21
 y_dir = 20
 
+e_stp = 16
+e_dir = 12
+
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(x_stp, GPIO.OUT)
@@ -33,6 +36,9 @@ GPIO.setup(x_ms3, GPIO.OUT)
 
 GPIO.setup(y_stp, GPIO.OUT)
 GPIO.setup(y_dir, GPIO.OUT)
+
+GPIO.setup(e_stp, GPIO.OUT)
+GPIO.setup(e_dir, GPIO.OUT)
 
 control = ''
 last = ''
@@ -88,6 +94,13 @@ def gotoXY(x_in, y_in, ignore = False):
     else:
         print("Target is outside boundaries")
 
+def extrude(steps,direction):
+    count = 0
+    GPIO.output(e_dir, direction)
+    while count < steps:
+        stepAxis(e_stp, 0.001)
+        count += 1
+
 def drawCircle(rad):
     global x_pos
     global y_pos
@@ -102,9 +115,44 @@ def drawCircle(rad):
 
     gotoXY(x_ori, y_ori)
 
+def checkerboard():
+    global x_pos
+    global y_pos
+
+    #border
+    GPIO.output(x_dir, GPIO.HIGH)
+    count = 0
+    while count < 8:
+        gotoXY(x_pos + s_p_m, y_pos)
+        extrude(50, GPIO.LOW)
+        count += 1
+        time.sleep(0.25)
+    count = 0
+    while count < 8:
+        gotoXY(x_pos, y_pos + s_p_m)
+        extrude(50, GPIO.LOW)
+        count += 1
+        time.sleep(0.25)
+    count = 0
+    while count < 8:
+        gotoXY(x_pos - s_p_m, y_pos)
+        extrude(50, GPIO.LOW)
+        count += 1
+        time.sleep(0.25)
+    count = 0
+    while count < 8:
+        gotoXY(x_pos, y_pos - s_p_m)
+        extrude(50, GPIO.LOW)
+        count += 1
+        time.sleep(0.25)
+
+    #dark
+    #light
+
 try:
     GPIO.output(x_dir, GPIO.LOW)
     GPIO.output(y_dir, GPIO.LOW)
+    GPIO.output(e_dir, GPIO.LOW)
     GPIO.output(x_ms1, GPIO.LOW)
     GPIO.output(x_ms2, GPIO.LOW)
     GPIO.output(x_ms3, GPIO.LOW)
@@ -161,6 +209,31 @@ try:
         if control == "c":
             rad = input("Radius: ")
             drawCircle(rad)
+
+        if control == "e":
+            GPIO.output(e_dir, GPIO.LOW)
+            while count < s_p_m:
+                stepAxis(e_stp, 0.001)
+                count += 1
+
+        if control == "q":
+            GPIO.output(e_dir, GPIO.HIGH)
+            while count < s_p_m:
+                stepAxis(e_stp, 0.001)
+                count += 1
+
+        if control == "u":
+            while True:
+                count = 0
+                GPIO.output(e_dir, GPIO.HIGH)
+                while count < s_p_m*10:
+                    stepAxis(e_stp, 0.001)
+                    count += 1
+                count = 0
+                GPIO.output(e_dir, GPIO.LOW)
+                while count < s_p_m*10:
+                    stepAxis(e_stp, 0.001)
+                    count += 1
 
         print ("coords: " + str(x_pos) + "," + str(y_pos))
         last = control
