@@ -1,17 +1,13 @@
 from PIL import Image
 from os import system
+from panjob import PanJob
+#TODO this is bad and I should feel bad v
+from config import *
 import time
 
-#threshold = (0,   15,  31,  47,  63,  80,  95,  111, 127, 191, 255)
-#threschar = ('@', '%', '#', '*', '+', '=', '-', '!', ':', '^', '.')
+current_job = PanJob()
 
-threshold = [0,   31,  62,  93,  125, 156, 187, 218, 255]
-threschar = ['@', '%', '#', '+', '=', '-', ':', '^', '.']
-
-#threshold = [0,   62,  125, 187, 255]
-#threschar = ['@', '#', '=', ':', '.']
-
-# Variables to store information about the currently loaded image file
+# Variables to store information about the currently loaded (raw) image file
 imgName  = ""
 rawImg   = None
 rawPix   = None
@@ -20,103 +16,68 @@ rawHigh  = None
 
 parsImg  = None
 parsPix  = None
-# TODO Allow for different sizes/resolutions/ratios
-parsHigh = 32
-parsWide = 32
-
-numThresh = 10
-rangeSize = 32
-
-delay = .001
 
 # loads an image
 def loadImage():
-    global imgName
-    global rawImg
-    global rawPix
-    global rawWide
-    global rawHigh
+    global current_job
 
-    imgName = raw_input("Image name (without extension):") 
+    current_job.filename = input("Image name (without extension, place file in input directory): ") 
+
     try:
-        rawImg = Image.open("input/" + imgName + ".png")
+        current_job.raw_image = Image.open("input/" + current_job.filename + ".png")
     except:
-        print "file failed to open"
+        print("file failed to open")
         imgName = ""
         return
-    rawPix = rawImg.load()
-    print "Image loaded successfully!"
 
-    # report image size and mode
-    rawWide, rawHigh = rawImg.size
-    print "Dimensions: " + str(rawWide) + ", " + str(rawHigh)
-    print "Image Mode: " + rawImg.mode
-
-# reports currently loaded image
-def reportImage():
-    global imgName
-
-    if imgName == "":
-        print "No image loaded"
-    else:
-        print "Image loaded: " + imgName + ".png"
+    current_job.raw_pixels = current_job.raw_image.load()
+    print("Image loaded successfully!")
+    print("Dimensions: " + str(current_job.rawWide()) + ", " + str(current_job.rawHigh()))
+    print("Image Mode: " + current_job.rawMode())
 
 # load, desaturate, and scale image
 # takes in raw image, saves edited .png file and loads pixels into parsPix array
-def parseImage(): 
-    global imgName
-    global rawImg
-    global rawPix
-    global rawWide
-    global rawHigh
+def parseImage():
+    global current_job
 
-    global parsImg
-    global parsPix
-    global parsWide
-    global parsHigh
+    if current_job.raw_image == None:
+        print("No image loaded")
+        return
 
     # create parsed image from raw image, resize image, desaturate
-    parsImg = rawImg
-    parsImg = parsImg.resize((parsWide, parsHigh))
-    parsImg = parsImg.convert("LA")
+    current_job.parsed_image = current_job.raw_image.resize((parsWide, parsHigh)).convert("LA")
 
     # parse through image, remove any partial transparency
-    parsPix = parsImg.load()
+    current_job.parsed_pixels = current_job.parsed_image.load()
     for j in range(0,parsHigh):
         for i in range(0,parsWide):
-            if parsPix[i,j][1] != 255:
-                parsPix[i,j] = (0,0)
+            if current_job.parsed_pixels[i,j][1] != 255:
+                current_job.parsed_pixels[i,j] = (0,0)
             else:
-                parsPix[i,j] = (parsPix[i,j][0], 255)
+                current_job.parsed_pixels[i,j] = (current_job.parsed_pixels[i,j][0], 255)
 
     # TODO Mirror image
 
     # save output image
-    parsImg.save("parsed/images/" + imgName + ".png")
+    current_job.parsed_image.save("parsed/images/" + current_job.filename + ".png")
+
+    print("Image parsed successfully!")
+    print("Parsed image saved to \'parsed/images" + current_job.filename + ".png\'")
 
 # print parsed image to ASCII
 # prints from parsPix array
 def previewImage():
-    global parsPix
-    global parsHigh
-    global parsWide
+    global current_job
 
-    #parse through image, print to terminal
-    line = ""
-    
+    # parse through image, print to terminal
     for j in range(0,parsHigh):
         for i in range(0,parsWide):
-            val = parsPix[i,j]
-            if val[1] != 0:
-                line += threschar[threshold.index(roundToThresh(val[0]))].ljust(2)
+            pixel = current_job.parsed_pixels[i,j]
+            if pixel[1] != 0:
+                print(".",end=' ')
             else:
-                line += "  "
-            i+=1
-        print line
-        line = ""
-        i=0
-        j+=1
-
+                print(" ",end=' ')
+        print()
 
 # partition image into contiguous islands of the same color
 # loads from parsPix array, outputs .pcode file
@@ -363,7 +324,7 @@ def printImage():
     fileIn.readline()
 
     wide, high = fileIn.readline().split(',',1)
-    print "Dimensions: "+ wide + ", " + high
+    print("Dimensions: "+ wide + ", " + high)
     
     wide = int(wide)
     high = int(high)
@@ -388,12 +349,12 @@ def printImage():
 
         # start command
         if args[0] == "start":
-            print "Beginning print"
+            print("Beginning print")
 
         # end command
         elif args[0] == "end":
             # TODO terminate print
-            print "Print complete!"
+            print("Print complete!")
 
         # move command
         elif args[0] == "M":
@@ -428,7 +389,7 @@ def printImage():
 
             output += (temp + "\n")
         
-        print output
+        print(output)
         time.sleep(delay)
         system('clear')
     
@@ -437,11 +398,8 @@ def printImage():
 
 #--------------------#
 
-def closeImages():
-    if rawImg != None:
-        rawImg.close()
-    if parsImg != None:
-        parsImg.close()
+def cleanup():
+    current_job.cleanup()
 
 #--------------------#
 
