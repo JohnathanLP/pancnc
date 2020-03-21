@@ -68,20 +68,38 @@ def parseImage():
 # prints from parsPix array
 def previewImage():
     global current_job
-
     # parse through image, print to terminal
     for j in range(0,parsHigh):
         for i in range(0,parsWide):
             pixel = current_job.parsed_pixels[i,j]
-            if pixel[1] != 0:
-                print(".",end=' ')
-            else:
-                print(" ",end=' ')
+            print(threschar[int(pixel[0]/threshold_size)] if pixel[1]>0 else ' ',end=' ')
         print()
 
 # partition image into contiguous islands of the same color
 # loads from parsPix array, outputs .pcode file
 def partitionImage():
+    global current_job
+
+    islands = []
+
+    for j in range(parsHigh):
+        for i in range(parsWide):
+            if current_job.parsed_pixels[i,j][1] > 0:
+                islands.append([(i,j)])
+
+    print("island partitioning is about to begin!")
+    print("there are initially: " + str(len(islands)) + " islands")
+
+    for j in range(parsHigh):
+        for i in range(parsWide):
+            current_pixel = current_job.parsed_pixels[i,j]
+            
+            #test right
+#            if i<parsWide-1:
+#                if iint(current_pixel[0]/threshold_size) == int(current_job.parsed_pixels[i+1,j][0]):
+                                        
+
+def partitionImageOld():
     global parsImg
     global parsPix
     global parsWide
@@ -403,11 +421,8 @@ def cleanup():
 
 #--------------------#
 
-def roundToThresh(valIn):
-    global threshold
-    for thresh in threshold:
-        if valIn <= thresh:
-            return thresh
+def roundToThresh(val_in):
+    return int(val_in/32)
 
 # find which island contains a specific coordinate
 def searchIslands(coord, islands):
@@ -418,3 +433,4 @@ def searchIslands(coord, islands):
 # get value of pixels in an island
 def islandValue(island, image):
     return str(image[island[0][0],island[0][1]][0])
+

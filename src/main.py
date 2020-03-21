@@ -21,7 +21,7 @@ if "-gui" not in sys.argv:
         print("1 Load image")
         print("2 Scale and desaturate image")
         print("3 Print ASCII image")
-#        print "4 Partition image into islands"
+        print("4 Partition image into islands")
 #        print "5 Simulate printing image"
 #        print "6 Threshold Image"
 #        print "7 Run Printer"
@@ -37,8 +37,8 @@ if "-gui" not in sys.argv:
             modules.parseImage()
         elif menu == "3":
             modules.previewImage()
-#        elif menu == "4":
-#            modules.partitionImage()
+        elif menu == "4":
+            modules.partitionImage()
 #        elif menu == "5":
 #            modules.printImage()
 #        elif menu == "6":
