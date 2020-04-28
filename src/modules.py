@@ -72,8 +72,16 @@ def previewImage():
     for j in range(0,parsHigh):
         for i in range(0,parsWide):
             pixel = current_job.parsed_pixels[i,j]
-            print(threschar[int(pixel[0]/threshold_size)] if pixel[1]>0 else ' ',end=' ')
-        print()
+#            print(threschar[int(pixel[0]/threshold_size)] if pixel[1]>0 else ' ',end=' ')
+#            print(int(pixel[0]/threshold_size) if pixel[1]>0 else ' ',end=' ')
+            threshold_index = 255/6
+            threshold_index = int(pixel[0]/threshold_index)
+            if pixel[1]>0:
+                print("\033[;" + str(40+threshold_index) + "m" + str(threshold_index),end=' ')
+            else:
+                print('\033[0m ',end=' ')
+        print('\033[0m')
+
 
 # partition image into contiguous islands of the same color
 # loads from parsPix array, outputs .pcode file
